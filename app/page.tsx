@@ -48,6 +48,7 @@ import { CtaSection } from "@/components/landing/cta-section";
 import { ProjectContact } from "@/components/landing/project-contact";
 import { FooterSection } from "@/components/landing/footer-section";
 import { AgencyHeroSection } from "@/components/landing/agency-hero-section";
+import { ProcessSystem } from "@/components/landing/process-system";
 
 export default function Home() {
   return (
@@ -59,10 +60,11 @@ export default function Home() {
       {/* <CodaHeroSection /> */}
 
       {/* Experience / Client Marquee */}
-      <ExperienceMarquee />
+      {/* <ExperienceMarquee /> */}
+      <ProcessSystem />
 
       {/* Studio Introduction */}
-      <StudioShowcase />
+      {/* <StudioShowcase /> */}
 
       {/* Expertise */}
       <ExpertiseSection />

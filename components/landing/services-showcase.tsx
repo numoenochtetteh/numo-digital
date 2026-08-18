@@ -119,6 +119,7 @@ export function ServicesShowcase() {
 
     const interval = window.setInterval(() => {
       const nextIndex = (activeIndex + 1) % services.length;
+
       changeService(nextIndex);
     }, CHANGE_INTERVAL);
 
@@ -136,9 +137,13 @@ export function ServicesShowcase() {
   return (
     <section
       id="services"
-      className="overflow-hidden bg-white py-20 text-black sm:py-24 lg:py-28"
+      className="overflow-hidden bg-[#f4f4f1] py-20 text-black sm:py-24 lg:py-28"
     >
       <style jsx>{`
+        /* ======================================================
+           CONTENT ENTRANCE
+        ====================================================== */
+
         .service-content-enter {
           animation: serviceContentEnter 700ms cubic-bezier(0.22, 1, 0.36, 1)
             both;
@@ -158,6 +163,10 @@ export function ServicesShowcase() {
           }
         }
 
+        /* ======================================================
+           PROGRESS
+        ====================================================== */
+
         .service-progress {
           animation: serviceProgress ${CHANGE_INTERVAL}ms linear forwards;
           transform-origin: left;
@@ -173,6 +182,65 @@ export function ServicesShowcase() {
           }
         }
 
+        /* ======================================================
+           HEADER BADGE
+        ====================================================== */
+
+        .services-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+
+          border: 1px solid #d4cec1;
+          border-radius: 5px;
+
+          padding: 8px 12px;
+
+          color: #5f574f;
+
+          font-family:
+            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+          font-size: 9px;
+          font-weight: 700;
+
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+        }
+
+        .services-eyebrow-dot {
+          display: block;
+
+          width: 8px;
+          height: 8px;
+
+          flex-shrink: 0;
+
+          border-radius: 2px;
+
+          background: #d9ff25;
+        }
+
+        @media (max-width: 600px) {
+          .services-eyebrow {
+            gap: 7px;
+
+            padding: 6px 9px;
+
+            font-size: 7px;
+          }
+
+          .services-eyebrow-dot {
+            width: 7px;
+            height: 7px;
+          }
+        }
+
+        /* ======================================================
+           REDUCED MOTION
+        ====================================================== */
+
         @media (prefers-reduced-motion: reduce) {
           .service-content-enter,
           .service-progress {
@@ -182,11 +250,17 @@ export function ServicesShowcase() {
       `}</style>
 
       <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-12">
-        {/* Section heading */}
+        {/* ======================================================
+            SECTION HEADING
+        ====================================================== */}
+
         <div className="mx-auto mb-14 max-w-[1250px] text-center lg:mb-16">
-          <p className="mb-7 font-mono text-[11px] font-semibold uppercase tracking-[0.24em] text-black/70 sm:text-xs">
-            Our services
-          </p>
+          <div className="mb-7">
+            <span className="services-eyebrow">
+              <span className="services-eyebrow-dot" />
+              OUR SERVICES
+            </span>
+          </div>
 
           <h2 className="font-display text-[clamp(3rem,5.7vw,6rem)] font-semibold leading-[0.92] tracking-[-0.055em]">
             We lead when your challenge
@@ -208,14 +282,20 @@ export function ServicesShowcase() {
           </Link>
         </div>
 
-        {/* Main service card */}
+        {/* ======================================================
+            MAIN SERVICE SHOWCASE
+        ====================================================== */}
+
         <div
           id="service-showcase"
           className="relative min-h-[610px] overflow-hidden rounded-[28px] sm:min-h-[650px] lg:min-h-[690px] lg:rounded-[36px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Changing background images */}
+          {/* ====================================================
+              BACKGROUND IMAGES
+          ==================================================== */}
+
           <div className="absolute inset-0">
             {services.map((service, index) => (
               <div
@@ -238,12 +318,18 @@ export function ServicesShowcase() {
             ))}
           </div>
 
-          {/* Image overlays */}
+          {/* ====================================================
+              IMAGE OVERLAYS
+          ==================================================== */}
+
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
 
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/5" />
 
-          {/* Changing service content */}
+          {/* ====================================================
+              ACTIVE SERVICE CONTENT
+          ==================================================== */}
+
           <div className="absolute inset-x-0 top-0 z-20 flex min-h-[510px] items-start px-7 pb-28 pt-8 text-white sm:min-h-[550px] sm:px-10 sm:pt-10 lg:min-h-[590px] lg:items-center lg:px-14 lg:pb-32 lg:pt-10">
             <div
               key={`service-content-${activeIndex}`}
@@ -253,12 +339,16 @@ export function ServicesShowcase() {
                   : "translate-y-0 opacity-100"
               }`}
             >
+              {/* ICON */}
+
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-white/25 bg-white/15 backdrop-blur-md sm:h-16 sm:w-16">
                 <ActiveIcon
                   className="h-6 w-6 sm:h-7 sm:w-7"
                   strokeWidth={1.5}
                 />
               </div>
+
+              {/* TITLE */}
 
               <h3 className="font-display text-[clamp(2.9rem,4.8vw,5.5rem)] font-medium leading-[0.9] tracking-[-0.055em]">
                 <span className="block">{activeService.title}</span>
@@ -268,9 +358,13 @@ export function ServicesShowcase() {
                 </span>
               </h3>
 
+              {/* DESCRIPTION */}
+
               <p className="mt-7 max-w-[530px] text-base leading-[1.6] text-white/85 sm:text-lg">
                 {activeService.description}
               </p>
+
+              {/* BUTTONS */}
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
@@ -294,7 +388,10 @@ export function ServicesShowcase() {
             </div>
           </div>
 
-          {/* Desktop navigation bar */}
+          {/* ====================================================
+              DESKTOP NAVIGATION
+          ==================================================== */}
+
           <div className="absolute bottom-5 left-1/2 z-30 hidden w-[calc(100%-40px)] max-w-[1360px] -translate-x-1/2 rounded-full border border-white/15 bg-black/55 p-1 shadow-[0_18px_55px_rgba(0,0,0,0.22)] backdrop-blur-xl md:block lg:bottom-6">
             <div className="grid grid-cols-6">
               {services.map((service, index) => (
@@ -325,7 +422,10 @@ export function ServicesShowcase() {
             </div>
           </div>
 
-          {/* Mobile navigation bar */}
+          {/* ====================================================
+              MOBILE NAVIGATION
+          ==================================================== */}
+
           <div className="absolute inset-x-4 bottom-4 z-30 md:hidden">
             <div className="overflow-x-auto rounded-[22px] border border-white/15 bg-black/60 p-1.5 backdrop-blur-xl">
               <div className="flex min-w-max items-center gap-1">
@@ -356,7 +456,10 @@ export function ServicesShowcase() {
             </div>
           </div>
 
-          {/* Service number */}
+          {/* ====================================================
+              SERVICE NUMBER
+          ==================================================== */}
+
           <div className="absolute right-7 top-7 z-20 rounded-full border border-white/20 bg-black/25 px-4 py-2 font-mono text-[10px] text-white backdrop-blur-md sm:right-10 sm:top-10">
             {String(activeIndex + 1).padStart(2, "0")} /{" "}
             {String(services.length).padStart(2, "0")}

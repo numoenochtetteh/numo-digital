@@ -38,11 +38,14 @@ export function WorkSection() {
     <section id="work" className="portfolio-work">
       <div className="portfolio-container">
         {/* ======================================================
-            NEW WORK HEADER
+            WORK HEADER
         ====================================================== */}
 
         <header className="portfolio-header">
-          <span className="portfolio-eyebrow">OUR WORK</span>
+          <span className="portfolio-eyebrow">
+            <span className="portfolio-eyebrow-dot" />
+            OUR WORK
+          </span>
 
           <h2>Digital Experiences.</h2>
 
@@ -247,7 +250,7 @@ export function WorkSection() {
           overflow: hidden;
           background: #f4f4f1;
           color: #0a0a0a;
-          padding: 115px 28px 90px;
+          padding: 110px 28px 90px;
         }
 
         .portfolio-container {
@@ -261,52 +264,68 @@ export function WorkSection() {
 
         .portfolio-header {
           display: flex;
-          max-width: 1320px;
-          margin: 0 auto 90px;
+          max-width: 1100px;
+          margin: 0 auto 70px;
           align-items: center;
           flex-direction: column;
           text-align: center;
         }
 
         .portfolio-eyebrow {
-          margin-bottom: 32px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 9px;
+          margin-bottom: 30px;
+          border: 1px solid #d4cec1;
+          border-radius: 5px;
+          padding: 8px 12px;
+          color: #5f574f;
           font-family:
             ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 11px;
+          font-size: 9px;
           font-weight: 700;
-          letter-spacing: 0.3em;
+          letter-spacing: 0.16em;
           text-transform: uppercase;
         }
 
+        .portfolio-eyebrow-dot {
+          display: block;
+          width: 8px;
+          height: 8px;
+          flex-shrink: 0;
+          border-radius: 2px;
+          background: #d9ff25;
+        }
+
         .portfolio-header h2 {
-          max-width: 1250px;
+          max-width: 1100px;
           margin: 0;
-          font-size: clamp(56px, 6.4vw, 105px);
-          font-weight: 650;
-          line-height: 0.94;
-          letter-spacing: -0.065em;
+          font-size: clamp(43px, 5vw, 72px);
+          font-weight: 700;
+          line-height: 0.98;
+          letter-spacing: -0.055em;
         }
 
         .portfolio-header p {
-          max-width: 730px;
-          margin: 38px auto 0;
-          color: #626262;
-          font-size: clamp(16px, 1.4vw, 20px);
-          font-weight: 400;
-          line-height: 1.55;
-          letter-spacing: -0.025em;
+          max-width: 570px;
+          margin: 28px auto 0;
+          color: #555555;
+          font-size: 16px;
+          line-height: 1.45;
+          letter-spacing: -0.015em;
         }
 
         .portfolio-view-button {
           display: inline-flex;
           align-items: center;
-          gap: 34px;
-          margin-top: 38px;
+          gap: 28px;
+          margin-top: 30px;
           border: 1px solid #c9c9c5;
           border-radius: 999px;
-          padding: 16px 25px 16px 31px;
+          padding: 14px 21px 14px 26px;
           color: #111;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 500;
           text-decoration: none;
           transition:
@@ -359,7 +378,6 @@ export function WorkSection() {
           background: #e8e8e5;
         }
 
-        /* PENGTRESSES stays at the height you changed */
         .project-image-featured {
           height: 390px;
         }
@@ -617,15 +635,19 @@ export function WorkSection() {
 
         @media (max-width: 900px) {
           .portfolio-work {
-            padding: 90px 18px 70px;
+            padding: 80px 18px 70px;
           }
 
           .portfolio-header {
-            margin-bottom: 70px;
+            margin-bottom: 60px;
           }
 
           .portfolio-header h2 {
-            font-size: clamp(54px, 9vw, 80px);
+            font-size: 48px;
+          }
+
+          .portfolio-header p {
+            font-size: 15px;
           }
 
           .portfolio-grid {
@@ -648,36 +670,41 @@ export function WorkSection() {
 
         @media (max-width: 600px) {
           .portfolio-work {
-            padding: 75px 12px 60px;
+            padding: 70px 12px 60px;
           }
 
           .portfolio-header {
-            margin-bottom: 55px;
+            max-width: 390px;
+            margin-bottom: 50px;
           }
 
           .portfolio-eyebrow {
-            margin-bottom: 22px;
-            font-size: 9px;
+            margin-bottom: 18px;
+            padding: 6px 9px;
+            font-size: 7px;
+          }
+
+          .portfolio-eyebrow-dot {
+            width: 7px;
+            height: 7px;
           }
 
           .portfolio-header h2 {
-            font-size: 48px;
+            font-size: 42px;
             line-height: 0.98;
           }
 
-          .portfolio-header h2 br {
-            display: none;
-          }
-
           .portfolio-header p {
-            max-width: 420px;
-            margin-top: 25px;
+            max-width: 350px;
+            margin-top: 22px;
             font-size: 14px;
+            line-height: 1.45;
           }
 
           .portfolio-view-button {
-            margin-top: 27px;
-            padding: 14px 20px 14px 24px;
+            gap: 22px;
+            margin-top: 25px;
+            padding: 13px 18px 13px 22px;
             font-size: 12px;
           }
 
