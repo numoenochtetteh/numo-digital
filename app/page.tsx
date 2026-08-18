@@ -79,13 +79,13 @@ export default function Home() {
       <DevelopersSection />
 
       {/* Testimonials */}
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
 
       {/* CTA */}
       <CtaSection />
 
       {/* Project Enquiry Form */}
-      <ProjectContact />
+      {/* <ProjectContact /> */}
 
       {/* Footer */}
       <FooterSection />
