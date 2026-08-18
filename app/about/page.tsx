@@ -1,646 +1,1948 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
-const projects = [
+import { Navigation } from "@/components/landing/navigation";
+import { FooterSection } from "@/components/landing/footer-section";
+
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Code2,
+  Compass,
+  Globe2,
+  Layers3,
+  Palette,
+  Rocket,
+  Sparkles,
+  Target,
+} from "lucide-react";
+
+const values = [
   {
-    name: "PENGTRESSES",
-    type: "Booking platform",
+    number: "01",
+    title: "Clarity first",
     description:
-      "A premium booking experience created for a London-based hair specialist.",
-    accent: "#ff9af5",
+      "Good digital experiences should make businesses easier to understand, not more complicated.",
+    icon: Compass,
+    color: "#d9ff25",
   },
   {
-    name: "POWER ELECTRODE",
-    type: "Corporate website",
+    number: "02",
+    title: "Design with purpose",
     description:
-      "A professional digital presence created for a growing Ghanaian manufacturer.",
-    accent: "#cfff5b",
+      "We care about how things look, but every visual decision should support a real business goal.",
+    icon: Palette,
+    color: "#b8a7ff",
   },
   {
-    name: "TOTAL LOGISTICS",
-    type: "Business website",
+    number: "03",
+    title: "Build properly",
     description:
-      "A clear, responsive website designed to communicate trust and capability.",
-    accent: "#fff047",
+      "Fast, responsive and thoughtful development matters just as much as the visual design.",
+    icon: Code2,
+    color: "#78a8ff",
+  },
+  {
+    number: "04",
+    title: "Think beyond launch",
+    description:
+      "A website should continue supporting the business long after the first version goes live.",
+    icon: Rocket,
+    color: "#ff815c",
   },
 ];
 
-const process = [
-  {
-    step: "01",
-    label: "Discovery",
-    title: "We understand your business",
-    description:
-      "We identify your goals, customers, services and project requirements.",
-    colour: "#ff9af5",
-  },
-  {
-    step: "02",
-    label: "Design",
-    title: "We create the experience",
-    description:
-      "We design a clear, professional website focused on trust and conversion.",
-    colour: "#cfff5b",
-  },
-  {
-    step: "03",
-    label: "Development",
-    title: "We build and launch",
-    description:
-      "We develop, test and launch a responsive website built for every screen.",
-    colour: "#fff047",
-  },
+const capabilities = [
+  "Web Design",
+  "Web Development",
+  "UX/UI",
+  "Branding",
+  "SEO & GEO",
+  "Digital Strategy",
+  "Website Audits",
+  "Performance",
 ];
 
 export default function AboutPage() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-
   useEffect(() => {
-    const section = sectionRef.current;
-
-    if (!section) return;
+    const elements = document.querySelectorAll("[data-reveal]");
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
       },
-      { threshold: 0.1 },
+      {
+        threshold: 0.12,
+      },
     );
 
-    observer.observe(section);
+    elements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
   }, []);
 
   return (
-    <main ref={sectionRef} className="about-page">
-      {/* Pink section */}
-      <section className="pink-section">
-        <div className="section-container pink-content">
-          <div
-            className={`pink-heading ${
-              visible ? "content-visible" : "content-hidden"
-            }`}
-          >
-            <span className="small-label">About Numo Digital</span>
+    <>
+      <Navigation />
 
-            <h1>
-              YOUR BUSINESS
-              <br />
-              KEEPS MOVING.
-              <br />
-              <span className="headline-bottom">
-                <span className="pink-video">
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    aria-hidden="true"
-                  >
-                    <source src="/videos/pink-balloon.webm" type="video/webm" />
-                  </video>
-                </span>
+      <main className="about-page">
+        {/* =====================================================
+            HERO
+        ===================================================== */}
 
-                <span>NUMO DOES TOO.</span>
-              </span>
+        <section className="about-hero">
+          <div className="about-glow about-glow-lime" />
+          <div className="about-glow about-glow-blue" />
+
+          <div className="about-hero-inner">
+            <span className="about-badge" data-reveal>
+              <span />
+              ABOUT NUMO DIGITAL
+            </span>
+
+            <h1 data-reveal>
+              We build digital
+              <br />
+              experiences businesses
+              <br />
+              can grow with.
             </h1>
+
+            <div className="about-hero-bottom" data-reveal>
+              <p>
+                Numo Digital is a web design and development studio focused on
+                helping growing businesses look credible, communicate clearly
+                and create better digital experiences.
+              </p>
+
+              <Link href="/#contact">
+                Start a project
+                <ArrowRight size={17} />
+              </Link>
+            </div>
           </div>
 
-          <div
-            className={`pink-description ${
-              visible ? "content-visible" : "content-hidden"
-            }`}
-          >
-            <p>
-              Numo Digital designs, builds and maintains professional websites
-              that help growing businesses build trust, attract customers and
-              generate more enquiries.
-            </p>
-          </div>
-        </div>
+          {/* =================================================
+              HERO VISUAL
+          ================================================= */}
 
-        {/* Project cards */}
-        <div className="section-container project-grid">
-          {projects.map((project, index) => (
-            <article
-              key={project.name}
-              className={`project-card ${
-                visible ? "card-visible" : "card-hidden"
-              }`}
-              style={{
-                transitionDelay: `${300 + index * 120}ms`,
-              }}
-            >
-              <div className="card-header">
-                <div className="card-brand">
-                  <strong>numo</strong>
-
-                  <span style={{ backgroundColor: project.accent }}>
-                    {project.type}
-                  </span>
-                </div>
-
-                <span className="card-number">0{index + 1}</span>
-              </div>
-
-              <div className="stars">★★★★★</div>
-
-              <h2>{project.name}</h2>
-              <p>{project.description}</p>
-
-              <div className="card-footer">
-                <span
-                  className="status-dot"
-                  style={{
-                    backgroundColor: project.accent,
-                    boxShadow: `0 0 14px ${project.accent}`,
-                  }}
-                />
-
-                <span>Selected Numo Digital project</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* Yellow section */}
-      <section className="yellow-section">
-        <div className="section-container yellow-heading">
-          <h2>
-            A WEB
-            <br />
-            STUDIO
-          </h2>
-        </div>
-
-        <div className="process-stage">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-            className="yellow-video"
-          >
-            <source src="/videos/yellow-balloon.webm" type="video/webm" />
-          </video>
-
-          <div className="process-list">
-            {process.map((item, index) => (
-              <article
-                className="process-card"
-                key={item.step}
-                style={{
-                  transform: `translateX(${index === 1 ? "30px" : "0"})`,
-                }}
+          <div className="about-hero-visual" data-reveal>
+            <div className="about-main-media">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/showcase/creative-workspace.jpg"
               >
-                <div className="process-top">
-                  <span className="process-number">{item.step}</span>
+                <source
+                  src="/expertise/product-experience.mp4"
+                  type="video/mp4"
+                />
+              </video>
 
-                  <span
-                    className="process-label"
-                    style={{ backgroundColor: item.colour }}
-                  >
-                    {item.label}
-                  </span>
-                </div>
+              <div className="about-media-overlay" />
 
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
+              <span className="about-media-label">
+                <span />
+                DESIGN · DEVELOPMENT · STRATEGY
+              </span>
+            </div>
+
+            <div className="about-floating-card about-floating-one">
+              <span>01</span>
+
+              <div>
+                <small>BASED IN</small>
+                <strong>Ghana · Working globally</strong>
+              </div>
+            </div>
+
+            <div className="about-floating-card about-floating-two">
+              <Target size={19} />
+
+              <div>
+                <small>FOCUS</small>
+                <strong>Business growth</strong>
+              </div>
+            </div>
+
+            <div className="about-floating-card about-floating-three">
+              <Sparkles size={18} />
+
+              <div>
+                <small>NUMO DIGITAL</small>
+                <strong>Websites built seriously.</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            MARQUEE
+        ===================================================== */}
+
+        <section className="about-marquee">
+          <div className="about-marquee-track">
+            {[...capabilities, ...capabilities].map((item, index) => (
+              <div className="about-marquee-item" key={`${item}-${index}`}>
+                <span />
+                {item}
+                <i>✦</i>
+              </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        <div className="section-container bottom-heading">
-          <h2>
-            THAT NEVER
-            <br />
-            STOPS.
-          </h2>
-        </div>
-      </section>
+        {/* =====================================================
+            INTRO STORY
+        ===================================================== */}
 
-      <style jsx global>{`
-        .about-page {
-          --black: #1a1a1a;
-          --pink: #f3a2ef;
-          --yellow: #f8ff58;
-          min-height: 100vh;
-          overflow: hidden;
-          background: #f1f1ef;
-          color: var(--black);
-          font-family: Arial, Helvetica, sans-serif;
-        }
+        <section className="about-story">
+          <div className="about-story-inner">
+            <div className="about-section-label" data-reveal>
+              <span>01</span>
+              WHO WE ARE
+            </div>
 
-        .section-container {
-          width: min(1180px, calc(100% - 48px));
-          margin: 0 auto;
-        }
+            <div className="about-story-copy">
+              <h2 data-reveal>
+                Small studio.
+                <br />
+                Serious work.
+              </h2>
 
-        .pink-section {
-          position: relative;
-          min-height: 720px;
-          padding: 75px 0 0;
-          background:
-            radial-gradient(
-              circle at 50% 70%,
-              rgba(255, 255, 255, 0.34),
-              transparent 42%
-            ),
-            var(--pink);
-        }
+              <div className="about-story-text" data-reveal>
+                <p>
+                  We started Numo Digital with a simple idea: businesses should
+                  not need a huge agency to get a website that looks
+                  professional and actually works.
+                </p>
 
-        .pink-content {
-          display: grid;
-          grid-template-columns: 1fr 0.8fr;
-          gap: 100px;
-          align-items: center;
-        }
+                <p>
+                  We bring strategy, design and development together so each
+                  project feels consistent from the first conversation to the
+                  final launch.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        .small-label {
-          display: block;
-          margin-bottom: 17px;
-          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-          font-size: 9px;
-          font-weight: 700;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-        }
+        {/* =====================================================
+            SPLIT FEATURE
+        ===================================================== */}
 
-        .pink-heading h1,
-        .yellow-heading h2,
-        .bottom-heading h2 {
-          margin: 0;
-          font-family:
-            Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-          font-weight: 900;
-          letter-spacing: -0.025em;
-          line-height: 0.82;
-          text-transform: uppercase;
-        }
+        <section className="about-feature">
+          <div className="about-feature-inner">
+            <div className="about-feature-media" data-reveal>
+              <Image
+                src="/showcase/coding-workspace.jpg"
+                alt="Numo Digital workspace"
+                fill
+                sizes="(max-width: 900px) 100vw, 50vw"
+              />
 
-        .pink-heading h1 {
-          font-size: clamp(57px, 6.4vw, 100px);
-        }
+              <div className="feature-media-overlay" />
 
-        .headline-bottom {
-          display: flex;
-          align-items: center;
-          gap: 11px;
-          white-space: nowrap;
-        }
+              <div className="feature-media-tag">
+                <span>02</span>
+                THE WAY WE THINK
+              </div>
+            </div>
 
-        .pink-video {
-          position: relative;
-          display: block;
-          width: clamp(75px, 8vw, 125px);
-          height: clamp(40px, 4.5vw, 70px);
-          overflow: hidden;
-          flex-shrink: 0;
-        }
+            <div className="about-feature-copy" data-reveal>
+              <span className="about-mini-label">
+                <span />
+                OUR APPROACH
+              </span>
 
-        .pink-video video {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 280%;
-          height: 430%;
-          object-fit: contain;
-          transform: translate(-50%, -50%);
-          mix-blend-mode: screen;
-          filter: saturate(2) contrast(1.3);
-        }
+              <h2>
+                Start with the
+                <br />
+                business.
+                <br />
+                <em>Then design.</em>
+              </h2>
 
-        .pink-description {
-          max-width: 470px;
-          padding-top: 70px;
-          transition-delay: 150ms !important;
-        }
+              <p>
+                Before thinking about colours, animations or layouts, we first
+                understand what the business is trying to achieve and what
+                customers need to understand.
+              </p>
 
-        .pink-description p {
-          margin: 0;
-          color: rgba(26, 26, 26, 0.62);
-          font-size: 15px;
-          line-height: 1.55;
-        }
+              <p>
+                That gives us a stronger foundation for everything that comes
+                next — structure, messaging, design, development and launch.
+              </p>
 
-        .content-hidden {
-          opacity: 0;
-          transform: translateY(22px);
-        }
+              <Link href="/services">
+                Explore our services
+                <ArrowUpRight size={17} />
+              </Link>
+            </div>
+          </div>
+        </section>
 
-        .content-visible {
-          opacity: 1;
-          transform: translateY(0);
-          transition:
-            opacity 0.8s ease,
-            transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
+        {/* =====================================================
+            VALUES
+        ===================================================== */}
 
-        .project-grid {
-          position: relative;
-          z-index: 5;
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 12px;
-          margin-top: 75px;
-          transform: translateY(55px);
-        }
+        <section className="about-values">
+          <div className="about-values-inner">
+            <div className="values-heading" data-reveal>
+              <span className="about-section-label">
+                <span>03</span>
+                WHAT MATTERS
+              </span>
 
-        .project-card {
-          min-height: 290px;
-          padding: 22px;
-          border: 1px solid rgba(0, 0, 0, 0.08);
-          border-radius: 12px;
-          background: white;
-          box-shadow: 0 20px 45px rgba(102, 28, 97, 0.16);
-          transition:
-            opacity 0.8s ease,
-            transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-            box-shadow 0.3s ease;
-        }
+              <h2>
+                The principles behind
+                <br />
+                everything we build.
+              </h2>
+            </div>
 
-        .project-card:hover {
-          transform: translateY(-7px) !important;
-          box-shadow: 0 28px 60px rgba(102, 28, 97, 0.24);
-        }
+            <div className="values-grid">
+              {values.map((value) => {
+                const Icon = value.icon;
 
-        .card-hidden {
-          opacity: 0;
-          transform: translateY(45px);
-        }
+                return (
+                  <article
+                    className="value-card"
+                    key={value.number}
+                    data-reveal
+                    style={
+                      {
+                        "--value-color": value.color,
+                      } as React.CSSProperties
+                    }
+                  >
+                    <div className="value-top">
+                      <span>{value.number}</span>
 
-        .card-visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
+                      <div className="value-icon">
+                        <Icon size={21} strokeWidth={1.7} />
+                      </div>
+                    </div>
 
-        .card-header,
-        .card-brand,
-        .card-footer,
-        .process-top {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
+                    <div>
+                      <h3>{value.title}</h3>
+                      <p>{value.description}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
 
-        .card-brand {
-          justify-content: flex-start;
-          gap: 8px;
-        }
+        {/* =====================================================
+            DARK PHILOSOPHY
+        ===================================================== */}
 
-        .card-brand strong {
-          font-size: 20px;
-          letter-spacing: -0.07em;
-        }
+        <section className="about-philosophy">
+          <div className="about-philosophy-inner" data-reveal>
+            <div className="philosophy-copy">
+              <span className="dark-about-label">
+                <span />
+                OUR PHILOSOPHY
+              </span>
 
-        .card-brand span,
-        .process-label {
-          border-radius: 999px;
-          padding: 5px 9px;
-          font-size: 8px;
-          font-weight: 800;
-          text-transform: uppercase;
-        }
+              <h2>
+                Make it clear.
+                <br />
+                Make it useful.
+                <br />
+                <span>Make it memorable.</span>
+              </h2>
 
-        .card-number,
-        .process-number {
-          color: #a1a1a1;
-          font-family: ui-monospace, monospace;
-          font-size: 9px;
-        }
+              <p>
+                The best websites are not the ones with the most effects. They
+                are the ones that make people understand the business, trust it
+                and know what to do next.
+              </p>
+            </div>
 
-        .stars {
-          margin: 39px 0 12px;
-          font-size: 10px;
-          letter-spacing: 2px;
-        }
+            <div className="philosophy-system">
+              <div className="philosophy-ring philosophy-ring-one" />
+              <div className="philosophy-ring philosophy-ring-two" />
+              <div className="philosophy-ring philosophy-ring-three" />
 
-        .project-card h2 {
-          margin: 0;
-          font-size: 27px;
-          letter-spacing: -0.05em;
-        }
+              <div className="philosophy-center">
+                <strong>numo</strong>
+                <small>DIGITAL</small>
+              </div>
 
-        .project-card > p {
-          min-height: 65px;
-          margin: 14px 0 18px;
-          padding: 13px;
-          border-radius: 7px;
-          background: #f3f3f1;
-          color: #747474;
-          font-size: 11px;
-          line-height: 1.5;
-        }
+              <div className="philosophy-node node-strategy">
+                <Compass size={17} />
+                STRATEGY
+              </div>
 
-        .card-footer {
-          justify-content: flex-start;
-          gap: 10px;
-          border-top: 1px solid #e5e5e2;
-          padding-top: 14px;
-          font-size: 10px;
-          font-weight: 600;
-        }
+              <div className="philosophy-node node-design">
+                <Palette size={17} />
+                DESIGN
+              </div>
 
-        .status-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-        }
+              <div className="philosophy-node node-build">
+                <Code2 size={17} />
+                BUILD
+              </div>
 
-        .yellow-section {
-          position: relative;
-          min-height: 800px;
-          padding: 125px 0 65px;
-          overflow: hidden;
-          background: var(--yellow);
-        }
+              <div className="philosophy-node node-growth">
+                <Globe2 size={17} />
+                GROWTH
+              </div>
+            </div>
+          </div>
+        </section>
 
-        .yellow-heading h2,
-        .bottom-heading h2 {
-          font-size: clamp(70px, 7.8vw, 120px);
-        }
+        {/* =====================================================
+            CAPABILITIES
+        ===================================================== */}
 
-        .process-stage {
-          position: relative;
-          width: min(720px, calc(100% - 40px));
-          min-height: 390px;
-          margin: -45px auto 0;
-        }
+        <section className="about-capabilities">
+          <div className="about-capabilities-inner">
+            <div className="capabilities-heading" data-reveal>
+              <div className="about-section-label">
+                <span>04</span>
+                CAPABILITIES
+              </div>
 
-        .yellow-video {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 520px;
-          height: 520px;
-          object-fit: contain;
-          transform: translate(-50%, -50%);
-          opacity: 1;
-          mix-blend-mode: screen;
-          filter: saturate(2.1) contrast(1.35);
-        }
+              <h2>
+                What we bring
+                <br />
+                to the table.
+              </h2>
+            </div>
 
-        .process-list {
-          position: relative;
-          z-index: 3;
-          width: min(520px, 90%);
-          margin: 0 auto;
-          padding-top: 60px;
-        }
+            <div className="capabilities-list">
+              {capabilities.map((capability, index) => (
+                <div className="capability-row" key={capability} data-reveal>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
 
-        .process-card {
-          margin-bottom: 5px;
-          padding: 17px 20px;
-          border: 1px solid rgba(0, 0, 0, 0.07);
-          border-radius: 8px;
-          background: rgba(255, 255, 255, 0.97);
-          box-shadow: 0 12px 30px rgba(110, 108, 0, 0.12);
-          transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease;
-        }
+                  <h3>{capability}</h3>
 
-        .process-card:hover {
-          transform: translateX(0) scale(1.015) !important;
-          box-shadow: 0 18px 40px rgba(110, 108, 0, 0.2);
-        }
+                  <ArrowUpRight size={19} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-        .process-label {
-          font-size: 8px;
-        }
+        {/* =====================================================
+            VISUAL COLLAGE
+        ===================================================== */}
 
-        .process-card h3 {
-          margin: 11px 0 4px;
-          font-size: 17px;
-          letter-spacing: -0.035em;
-        }
+        <section className="about-collage">
+          <div className="about-collage-inner">
+            <div className="collage-card collage-large" data-reveal>
+              <Image
+                src="/showcase/creative-workspace.jpg"
+                alt="Creative digital work"
+                fill
+                sizes="(max-width: 900px) 100vw, 60vw"
+              />
 
-        .process-card p {
-          margin: 0;
-          color: #757575;
-          font-size: 10px;
-          line-height: 1.45;
-        }
+              <div className="collage-overlay" />
 
-        .bottom-heading {
-          position: relative;
-          z-index: 5;
-          display: flex;
-          justify-content: flex-end;
-          margin-top: -80px;
-          text-align: right;
-        }
+              <span>Design with purpose.</span>
+            </div>
 
-        @media (max-width: 800px) {
-          .pink-section {
-            min-height: auto;
-            padding-top: 55px;
+            <div className="collage-right">
+              <div className="collage-card collage-small" data-reveal>
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster="/expertise/tech-websites.png"
+                >
+                  <source src="/expertise/tech-websites.mp4" type="video/mp4" />
+                </video>
+
+                <div className="collage-overlay" />
+
+                <span>Built to perform.</span>
+              </div>
+
+              <div className="collage-message" data-reveal>
+                <div className="collage-message-top">
+                  <span>NUMO DIGITAL</span>
+                  <span>2026</span>
+                </div>
+
+                <h3>
+                  Good digital
+                  <br />
+                  work should make
+                  <br />
+                  business easier.
+                </h3>
+
+                <Link href="/work">
+                  View our work
+                  <ArrowUpRight size={17} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            FINAL STATEMENT
+        ===================================================== */}
+
+        <section className="about-statement">
+          <div className="about-statement-inner">
+            <span data-reveal>WHY NUMO DIGITAL</span>
+
+            <h2 data-reveal>
+              We care about the
+              <br />
+              details because your
+              <br />
+              <em>customers notice them.</em>
+            </h2>
+
+            <div className="statement-bottom" data-reveal>
+              <p>
+                From the first headline to mobile performance, every part of the
+                experience contributes to how people perceive your business.
+              </p>
+
+              <Link href="/#contact">
+                Let&apos;s work together
+                <ArrowUpRight size={17} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* =====================================================
+            FINAL CTA
+        ===================================================== */}
+
+        <section className="about-final">
+          <div className="about-final-inner" data-reveal>
+            <div className="about-final-glow" />
+
+            <div className="about-final-copy">
+              <span>READY WHEN YOU ARE</span>
+
+              <h2>
+                Let&apos;s build
+                <br />
+                something useful.
+              </h2>
+            </div>
+
+            <Link href="/#contact">
+              Start a project
+              <span>
+                <ArrowUpRight size={22} />
+              </span>
+            </Link>
+          </div>
+        </section>
+
+        {/* =====================================================
+            STYLES
+        ===================================================== */}
+
+        <style jsx global>{`
+          /* =====================================================
+             GLOBAL
+          ===================================================== */
+
+          .about-page {
+            overflow: hidden;
+            background: #f4f4f1;
+            color: #111;
           }
 
-          .pink-content {
-            grid-template-columns: 1fr;
-            gap: 35px;
+          [data-reveal] {
+            opacity: 0;
+            transform: translateY(35px);
+            transition:
+              opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
           }
 
-          .pink-description {
-            max-width: 500px;
-            padding-top: 0;
+          [data-reveal].is-visible {
+            opacity: 1;
+            transform: translateY(0);
           }
 
-          .project-grid {
-            grid-template-columns: 1fr;
-            margin-top: 50px;
-            padding-bottom: 80px;
-            transform: none;
+          /* =====================================================
+             HERO
+          ===================================================== */
+
+          .about-hero {
+            position: relative;
+            min-height: 1080px;
+            overflow: hidden;
+            padding: 145px 28px 90px;
           }
 
-          .project-card {
-            min-height: auto;
+          .about-hero-inner {
+            position: relative;
+            z-index: 5;
+            width: min(1350px, 100%);
+            margin: 0 auto;
           }
 
-          .project-card > p {
-            min-height: auto;
+          .about-badge,
+          .about-mini-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            border: 1px solid #d4cec1;
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: #5f574f;
+            font-family:
+              ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
           }
 
-          .yellow-section {
-            min-height: auto;
-            padding-top: 70px;
+          .about-badge > span,
+          .about-mini-label > span {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: #d9ff25;
           }
 
-          .process-stage {
-            margin-top: 20px;
+          .about-hero h1 {
+            max-width: 1170px;
+            margin: 38px 0 0;
+            font-size: clamp(62px, 7.5vw, 118px);
+            font-weight: 650;
+            line-height: 0.86;
+            letter-spacing: -0.075em;
           }
 
-          .bottom-heading {
-            margin-top: 0;
-          }
-        }
-
-        @media (max-width: 520px) {
-          .section-container {
-            width: calc(100% - 30px);
+          .about-hero-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 50px;
+            margin-top: 45px;
           }
 
-          .pink-heading h1 {
-            font-size: clamp(49px, 14vw, 68px);
+          .about-hero-bottom p {
+            max-width: 620px;
+            margin: 0;
+            color: #68615a;
+            font-size: 16px;
+            line-height: 1.6;
           }
 
-          .headline-bottom {
-            display: block;
-            white-space: normal;
+          .about-hero-bottom a {
+            display: inline-flex;
+            flex-shrink: 0;
+            align-items: center;
+            gap: 28px;
+            border-radius: 999px;
+            background: #111;
+            padding: 16px 21px 16px 26px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
           }
 
-          .pink-video {
-            display: inline-block;
-            width: 70px;
-            height: 42px;
-            margin-right: 7px;
-            vertical-align: middle;
+          .about-hero-bottom a svg {
+            color: #d9ff25;
           }
 
-          .yellow-heading h2,
-          .bottom-heading h2 {
-            font-size: clamp(66px, 20vw, 90px);
+          /* =====================================================
+             GLOW
+          ===================================================== */
+
+          .about-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            animation: aboutGlow 8s ease-in-out infinite;
           }
 
-          .process-stage {
-            min-height: 430px;
+          .about-glow-lime {
+            top: 180px;
+            left: -80px;
+            width: 480px;
+            height: 480px;
+            background: rgba(217, 255, 37, 0.2);
           }
 
-          .process-list {
+          .about-glow-blue {
+            top: 300px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: rgba(95, 126, 255, 0.15);
+            animation-delay: -4s;
+          }
+
+          @keyframes aboutGlow {
+            50% {
+              transform: translate3d(35px, -25px, 0) scale(1.08);
+            }
+          }
+
+          /* =====================================================
+             HERO VISUAL
+          ===================================================== */
+
+          .about-hero-visual {
+            position: relative;
+            z-index: 4;
+            width: min(1180px, 92%);
+            height: 500px;
+            margin: 80px auto 0;
+          }
+
+          .about-main-media {
+            position: absolute;
+            inset: 0 90px;
+            overflow: hidden;
+            border-radius: 30px;
+            background: #ddd;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.11);
+          }
+
+          .about-main-media video {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
           }
 
-          .process-card {
-            transform: none !important;
+          .about-media-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0.03),
+              transparent 60%,
+              rgba(0, 0, 0, 0.22)
+            );
           }
 
-          .yellow-video {
-            width: 450px;
-            height: 450px;
+          .about-media-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.86);
+            padding: 10px 13px;
+            font-family: ui-monospace, monospace;
+            font-size: 8px;
+            backdrop-filter: blur(15px);
           }
-        }
 
-        @media (prefers-reduced-motion: reduce) {
-          *,
-          *::before,
-          *::after {
-            animation-duration: 0.01ms !important;
-            transition-duration: 0.01ms !important;
+          .about-media-label > span {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: #d9ff25;
           }
-        }
-      `}</style>
-    </main>
+
+          .about-floating-card {
+            position: absolute;
+            z-index: 6;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(17, 17, 17, 0.1);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 11px 14px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(15px);
+            animation: aboutCardFloat 4.5s ease-in-out infinite;
+          }
+
+          .about-floating-one {
+            top: 60px;
+            left: 0;
+          }
+
+          .about-floating-two {
+            top: 220px;
+            right: 0;
+            animation-delay: -1.5s;
+          }
+
+          .about-floating-three {
+            bottom: 25px;
+            left: 45px;
+            animation-delay: -3s;
+          }
+
+          @keyframes aboutCardFloat {
+            50% {
+              transform: translateY(-14px);
+            }
+          }
+
+          .about-floating-card > span:first-child {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            border-radius: 11px;
+            background: #d9ff25;
+            font-family: ui-monospace, monospace;
+            font-size: 9px;
+          }
+
+          .about-floating-card > svg {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            background: #d9ff25;
+            padding: 9px;
+          }
+
+          .about-floating-card > div {
+            display: flex;
+            min-width: 135px;
+            flex-direction: column;
+          }
+
+          .about-floating-card small {
+            color: #8b857f;
+            font-family: ui-monospace, monospace;
+            font-size: 6px;
+            letter-spacing: 0.08em;
+          }
+
+          .about-floating-card strong {
+            margin-top: 3px;
+            font-size: 10px;
+          }
+
+          /* =====================================================
+             MARQUEE
+          ===================================================== */
+
+          .about-marquee {
+            overflow: hidden;
+            border-top: 1px solid #d1cec7;
+            border-bottom: 1px solid #d1cec7;
+            background: #e8e6df;
+          }
+
+          .about-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: aboutMarquee 26s linear infinite;
+          }
+
+          .about-marquee-item {
+            display: flex;
+            height: 70px;
+            align-items: center;
+            gap: 17px;
+            padding: 0 25px;
+            white-space: nowrap;
+            font-size: 14px;
+          }
+
+          .about-marquee-item > span {
+            width: 9px;
+            height: 9px;
+            border-radius: 2px;
+            background: #d9ff25;
+          }
+
+          .about-marquee-item i {
+            color: #9b958e;
+            font-style: normal;
+          }
+
+          @keyframes aboutMarquee {
+            to {
+              transform: translateX(-50%);
+            }
+          }
+
+          /* =====================================================
+             STORY
+          ===================================================== */
+
+          .about-story {
+            padding: 140px 28px;
+          }
+
+          .about-story-inner {
+            display: grid;
+            width: min(1350px, 100%);
+            margin: 0 auto;
+            grid-template-columns: 0.35fr 1fr;
+            gap: 70px;
+          }
+
+          .about-section-label {
+            display: flex;
+            gap: 17px;
+            padding-top: 10px;
+            color: #77716b;
+            font-family: ui-monospace, monospace;
+            font-size: 9px;
+            letter-spacing: 0.12em;
+          }
+
+          .about-section-label > span {
+            color: #9aac00;
+          }
+
+          .about-story h2 {
+            margin: 0;
+            font-size: clamp(60px, 7vw, 105px);
+            font-weight: 600;
+            line-height: 0.88;
+            letter-spacing: -0.07em;
+          }
+
+          .about-story-text {
+            display: grid;
+            max-width: 850px;
+            margin-top: 45px;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+          }
+
+          .about-story-text p {
+            margin: 0;
+            color: #68615b;
+            font-size: 14px;
+            line-height: 1.75;
+          }
+
+          /* =====================================================
+             FEATURE
+          ===================================================== */
+
+          .about-feature {
+            padding: 0 28px 130px;
+          }
+
+          .about-feature-inner {
+            display: grid;
+            width: min(1350px, 100%);
+            margin: 0 auto;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            border: 1px solid #d5d2ca;
+            border-radius: 32px;
+            background: #ebe9e3;
+          }
+
+          .about-feature-media {
+            position: relative;
+            min-height: 680px;
+            overflow: hidden;
+          }
+
+          .about-feature-media img {
+            object-fit: cover;
+            transition: transform 0.9s ease;
+          }
+
+          .about-feature-inner:hover .about-feature-media img {
+            transform: scale(1.04);
+          }
+
+          .feature-media-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              180deg,
+              transparent 50%,
+              rgba(0, 0, 0, 0.18)
+            );
+          }
+
+          .feature-media-tag {
+            position: absolute;
+            bottom: 22px;
+            left: 22px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.88);
+            padding: 10px 13px;
+            font-family: ui-monospace, monospace;
+            font-size: 8px;
+            backdrop-filter: blur(15px);
+          }
+
+          .feature-media-tag span {
+            display: grid;
+            width: 29px;
+            height: 29px;
+            place-items: center;
+            border-radius: 50%;
+            background: #d9ff25;
+          }
+
+          .about-feature-copy {
+            display: flex;
+            justify-content: center;
+            padding: 70px;
+            flex-direction: column;
+          }
+
+          .about-feature-copy h2 {
+            margin: 35px 0 0;
+            font-size: clamp(54px, 5.6vw, 88px);
+            font-weight: 600;
+            line-height: 0.9;
+            letter-spacing: -0.065em;
+          }
+
+          .about-feature-copy h2 em {
+            color: #79736d;
+            font-family: serif;
+            font-weight: 400;
+          }
+
+          .about-feature-copy p {
+            max-width: 520px;
+            margin: 25px 0 0;
+            color: #69635d;
+            font-size: 13px;
+            line-height: 1.7;
+          }
+
+          .about-feature-copy > a {
+            display: inline-flex;
+            align-self: flex-start;
+            align-items: center;
+            gap: 28px;
+            margin-top: 35px;
+            border-radius: 999px;
+            background: #111;
+            padding: 14px 18px 14px 22px;
+            color: white;
+            font-size: 11px;
+            text-decoration: none;
+          }
+
+          .about-feature-copy > a svg {
+            color: #d9ff25;
+          }
+
+          /* =====================================================
+             VALUES
+          ===================================================== */
+
+          .about-values {
+            padding: 120px 28px 140px;
+          }
+
+          .about-values-inner {
+            width: min(1350px, 100%);
+            margin: 0 auto;
+          }
+
+          .values-heading {
+            margin-bottom: 70px;
+          }
+
+          .values-heading h2 {
+            margin: 30px 0 0;
+            font-size: clamp(53px, 6vw, 90px);
+            font-weight: 600;
+            line-height: 0.91;
+            letter-spacing: -0.065em;
+          }
+
+          .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+          }
+
+          .value-card {
+            display: flex;
+            min-height: 390px;
+            padding: 25px;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #d5d2cb;
+            border-radius: 25px;
+            background: #eeece7;
+            transition:
+              transform 0.35s ease,
+              background 0.35s ease;
+          }
+
+          .value-card:hover {
+            background: #f8f7f4;
+            transform: translateY(-6px);
+          }
+
+          .value-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+
+          .value-top > span {
+            font-family: ui-monospace, monospace;
+            font-size: 9px;
+          }
+
+          .value-icon {
+            display: grid;
+            width: 48px;
+            height: 48px;
+            place-items: center;
+            border-radius: 14px;
+            background: var(--value-color);
+          }
+
+          .value-card h3 {
+            margin: 0;
+            font-size: 29px;
+            letter-spacing: -0.04em;
+          }
+
+          .value-card p {
+            margin: 15px 0 0;
+            color: #6c665f;
+            font-size: 12px;
+            line-height: 1.6;
+          }
+
+          /* =====================================================
+             PHILOSOPHY
+          ===================================================== */
+
+          .about-philosophy {
+            padding: 28px;
+          }
+
+          .about-philosophy-inner {
+            display: grid;
+            width: min(1350px, 100%);
+            min-height: 700px;
+            margin: 0 auto;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            border-radius: 34px;
+            background: #111;
+            color: white;
+          }
+
+          .philosophy-copy {
+            display: flex;
+            justify-content: center;
+            padding: 70px;
+            flex-direction: column;
+          }
+
+          .dark-about-label {
+            display: inline-flex;
+            align-self: flex-start;
+            align-items: center;
+            gap: 9px;
+            border: 1px solid rgba(255, 255, 255, 0.17);
+            border-radius: 6px;
+            padding: 8px 11px;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: ui-monospace, monospace;
+            font-size: 8px;
+            letter-spacing: 0.12em;
+          }
+
+          .dark-about-label > span {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: #d9ff25;
+          }
+
+          .philosophy-copy h2 {
+            margin: 35px 0 0;
+            font-size: clamp(54px, 5.7vw, 90px);
+            font-weight: 600;
+            line-height: 0.9;
+            letter-spacing: -0.065em;
+          }
+
+          .philosophy-copy h2 span {
+            color: #d9ff25;
+          }
+
+          .philosophy-copy p {
+            max-width: 500px;
+            margin: 30px 0 0;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 14px;
+            line-height: 1.65;
+          }
+
+          .philosophy-system {
+            position: relative;
+            overflow: hidden;
+          }
+
+          .philosophy-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+          }
+
+          .philosophy-ring-one {
+            width: 230px;
+            height: 230px;
+          }
+
+          .philosophy-ring-two {
+            width: 420px;
+            height: 420px;
+          }
+
+          .philosophy-ring-three {
+            width: 620px;
+            height: 620px;
+          }
+
+          .philosophy-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            width: 125px;
+            height: 125px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            background: #d9ff25;
+            color: #111;
+            flex-direction: column;
+            transform: translate(-50%, -50%);
+            animation: aboutPulse 4s ease-in-out infinite;
+          }
+
+          .philosophy-center strong {
+            font-size: 25px;
+          }
+
+          .philosophy-center small {
+            font-family: ui-monospace, monospace;
+            font-size: 6px;
+            letter-spacing: 0.13em;
+          }
+
+          @keyframes aboutPulse {
+            50% {
+              transform: translate(-50%, -50%) scale(1.07);
+            }
+          }
+
+          .philosophy-node {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 11px 14px;
+            font-family: ui-monospace, monospace;
+            font-size: 8px;
+            backdrop-filter: blur(10px);
+            animation: aboutNodeFloat 5s ease-in-out infinite;
+          }
+
+          .node-strategy {
+            top: 20%;
+            left: 14%;
+          }
+
+          .node-design {
+            top: 24%;
+            right: 14%;
+            animation-delay: -1.3s;
+          }
+
+          .node-build {
+            bottom: 20%;
+            left: 19%;
+            animation-delay: -2.5s;
+          }
+
+          .node-growth {
+            right: 16%;
+            bottom: 22%;
+            animation-delay: -3.7s;
+          }
+
+          @keyframes aboutNodeFloat {
+            50% {
+              transform: translateY(-13px);
+            }
+          }
+
+          /* =====================================================
+             CAPABILITIES
+          ===================================================== */
+
+          .about-capabilities {
+            padding: 150px 28px;
+          }
+
+          .about-capabilities-inner {
+            display: grid;
+            width: min(1350px, 100%);
+            margin: 0 auto;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: 90px;
+          }
+
+          .capabilities-heading h2 {
+            margin: 35px 0 0;
+            font-size: clamp(53px, 5.8vw, 90px);
+            font-weight: 600;
+            line-height: 0.9;
+            letter-spacing: -0.065em;
+          }
+
+          .capabilities-list {
+            border-top: 1px solid #d2cfc8;
+          }
+
+          .capability-row {
+            display: grid;
+            min-height: 90px;
+            grid-template-columns: 80px 1fr auto;
+            align-items: center;
+            border-bottom: 1px solid #d2cfc8;
+            transition: padding 0.3s ease;
+          }
+
+          .capability-row:hover {
+            padding-right: 8px;
+            padding-left: 8px;
+          }
+
+          .capability-row > span {
+            color: #8a847e;
+            font-family: ui-monospace, monospace;
+            font-size: 9px;
+          }
+
+          .capability-row h3 {
+            margin: 0;
+            font-size: clamp(25px, 2.2vw, 35px);
+            font-weight: 500;
+            letter-spacing: -0.035em;
+          }
+
+          /* =====================================================
+             COLLAGE
+          ===================================================== */
+
+          .about-collage {
+            padding: 0 28px 140px;
+          }
+
+          .about-collage-inner {
+            display: grid;
+            width: min(1350px, 100%);
+            margin: 0 auto;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 15px;
+          }
+
+          .collage-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+          }
+
+          .collage-large {
+            min-height: 720px;
+          }
+
+          .collage-small {
+            min-height: 350px;
+          }
+
+          .collage-card img,
+          .collage-card video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .collage-card img {
+            object-fit: cover;
+          }
+
+          .collage-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+              180deg,
+              transparent 60%,
+              rgba(0, 0, 0, 0.35)
+            );
+          }
+
+          .collage-card > span {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            z-index: 3;
+            color: white;
+            font-size: 19px;
+            font-weight: 600;
+          }
+
+          .collage-right {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+          }
+
+          .collage-message {
+            display: flex;
+            min-height: 355px;
+            padding: 28px;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 28px;
+            background: #d9ff25;
+          }
+
+          .collage-message-top {
+            display: flex;
+            justify-content: space-between;
+            font-family: ui-monospace, monospace;
+            font-size: 8px;
+          }
+
+          .collage-message h3 {
+            margin: auto 0 0;
+            font-size: clamp(35px, 3.4vw, 51px);
+            font-weight: 600;
+            line-height: 0.94;
+            letter-spacing: -0.055em;
+          }
+
+          .collage-message a {
+            display: inline-flex;
+            align-self: flex-start;
+            align-items: center;
+            gap: 25px;
+            margin-top: 25px;
+            border-radius: 999px;
+            background: #111;
+            padding: 13px 17px;
+            color: white;
+            font-size: 10px;
+            text-decoration: none;
+          }
+
+          /* =====================================================
+             STATEMENT
+          ===================================================== */
+
+          .about-statement {
+            padding: 130px 28px 160px;
+          }
+
+          .about-statement-inner {
+            width: min(1350px, 100%);
+            margin: 0 auto;
+          }
+
+          .about-statement-inner > span {
+            font-family: ui-monospace, monospace;
+            font-size: 9px;
+            letter-spacing: 0.15em;
+          }
+
+          .about-statement h2 {
+            margin: 35px 0 0;
+            font-size: clamp(65px, 8vw, 125px);
+            font-weight: 600;
+            line-height: 0.85;
+            letter-spacing: -0.075em;
+          }
+
+          .about-statement h2 em {
+            color: #827b74;
+            font-family: serif;
+            font-weight: 400;
+          }
+
+          .statement-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 50px;
+            margin-top: 60px;
+          }
+
+          .statement-bottom p {
+            max-width: 600px;
+            margin: 0;
+            color: #68615b;
+            font-size: 15px;
+            line-height: 1.65;
+          }
+
+          .statement-bottom a {
+            display: inline-flex;
+            align-items: center;
+            gap: 25px;
+            border-radius: 999px;
+            background: #111;
+            padding: 15px 20px 15px 25px;
+            color: white;
+            font-size: 12px;
+            text-decoration: none;
+          }
+
+          .statement-bottom a svg {
+            color: #d9ff25;
+          }
+
+          /* =====================================================
+             FINAL
+          ===================================================== */
+
+          .about-final {
+            padding: 30px 28px 70px;
+          }
+
+          .about-final-inner {
+            position: relative;
+            display: flex;
+            width: min(1350px, 100%);
+            min-height: 520px;
+            margin: 0 auto;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 50px;
+            overflow: hidden;
+            border-radius: 34px;
+            background: #dedbd3;
+            padding: 60px;
+          }
+
+          .about-final-glow {
+            position: absolute;
+            top: -130px;
+            right: 4%;
+            width: 490px;
+            height: 490px;
+            border-radius: 50%;
+            background: rgba(217, 255, 37, 0.78);
+            filter: blur(100px);
+          }
+
+          .about-final-copy {
+            position: relative;
+            z-index: 3;
+          }
+
+          .about-final-copy > span {
+            font-family: ui-monospace, monospace;
+            font-size: 8px;
+            letter-spacing: 0.14em;
+          }
+
+          .about-final h2 {
+            margin: 25px 0 0;
+            font-size: clamp(65px, 7vw, 108px);
+            font-weight: 600;
+            line-height: 0.86;
+            letter-spacing: -0.07em;
+          }
+
+          .about-final-inner > a {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-shrink: 0;
+            align-items: center;
+            gap: 30px;
+            border-radius: 999px;
+            background: #111;
+            padding: 7px 8px 7px 27px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+          }
+
+          .about-final-inner > a > span {
+            display: grid;
+            width: 54px;
+            height: 54px;
+            place-items: center;
+            border-radius: 50%;
+            background: #d9ff25;
+            color: #111;
+            transition: transform 0.3s ease;
+          }
+
+          .about-final-inner > a:hover > span {
+            transform: rotate(45deg);
+          }
+
+          /* =====================================================
+             TABLET
+          ===================================================== */
+
+          @media (max-width: 900px) {
+            .about-hero {
+              min-height: auto;
+              padding-top: 125px;
+            }
+
+            .about-hero-bottom {
+              align-items: flex-start;
+              flex-direction: column;
+            }
+
+            .about-hero-visual {
+              width: 100%;
+            }
+
+            .about-main-media {
+              inset: 0 40px;
+            }
+
+            .about-story-inner {
+              grid-template-columns: 1fr;
+              gap: 30px;
+            }
+
+            .about-feature-inner {
+              grid-template-columns: 1fr;
+            }
+
+            .about-feature-media {
+              min-height: 550px;
+            }
+
+            .values-grid {
+              grid-template-columns: 1fr 1fr;
+            }
+
+            .about-philosophy-inner {
+              grid-template-columns: 1fr;
+            }
+
+            .philosophy-system {
+              min-height: 540px;
+            }
+
+            .about-capabilities-inner {
+              grid-template-columns: 1fr;
+            }
+
+            .about-collage-inner {
+              grid-template-columns: 1fr;
+            }
+
+            .collage-large {
+              min-height: 550px;
+            }
+
+            .statement-bottom {
+              align-items: flex-start;
+              flex-direction: column;
+            }
+
+            .about-final-inner {
+              align-items: flex-start;
+              flex-direction: column;
+              justify-content: flex-end;
+            }
+          }
+
+          /* =====================================================
+             MOBILE
+          ===================================================== */
+
+          @media (max-width: 600px) {
+            .about-hero {
+              padding: 100px 14px 70px;
+            }
+
+            .about-badge {
+              padding: 6px 9px;
+              font-size: 7px;
+            }
+
+            .about-hero h1 {
+              margin-top: 30px;
+              font-size: 50px;
+              line-height: 0.9;
+            }
+
+            .about-hero-bottom {
+              margin-top: 30px;
+            }
+
+            .about-hero-bottom p {
+              font-size: 14px;
+            }
+
+            .about-hero-visual {
+              height: 320px;
+              margin-top: 55px;
+            }
+
+            .about-main-media {
+              inset: 0;
+              border-radius: 20px;
+            }
+
+            .about-floating-card {
+              padding: 8px;
+            }
+
+            .about-floating-one {
+              top: 25px;
+              left: -5px;
+            }
+
+            .about-floating-two {
+              top: 140px;
+              right: -5px;
+            }
+
+            .about-floating-three {
+              bottom: 8px;
+              left: 10px;
+            }
+
+            .about-floating-card > div {
+              min-width: 90px;
+            }
+
+            .about-floating-card strong {
+              font-size: 8px;
+            }
+
+            .about-marquee-item {
+              height: 62px;
+              padding: 0 20px;
+              font-size: 12px;
+            }
+
+            .about-story {
+              padding: 85px 14px;
+            }
+
+            .about-story h2 {
+              font-size: 51px;
+            }
+
+            .about-story-text {
+              grid-template-columns: 1fr;
+              gap: 25px;
+            }
+
+            .about-feature {
+              padding: 0 12px 90px;
+            }
+
+            .about-feature-inner {
+              border-radius: 22px;
+            }
+
+            .about-feature-media {
+              min-height: 390px;
+            }
+
+            .about-feature-copy {
+              padding: 45px 23px;
+            }
+
+            .about-feature-copy h2 {
+              font-size: 47px;
+            }
+
+            .about-values {
+              padding: 80px 12px 90px;
+            }
+
+            .values-heading h2 {
+              font-size: 47px;
+            }
+
+            .values-grid {
+              grid-template-columns: 1fr;
+            }
+
+            .value-card {
+              min-height: 300px;
+              border-radius: 20px;
+            }
+
+            .about-philosophy {
+              padding: 12px;
+            }
+
+            .about-philosophy-inner {
+              border-radius: 22px;
+            }
+
+            .philosophy-copy {
+              padding: 50px 24px;
+            }
+
+            .philosophy-copy h2 {
+              font-size: 48px;
+            }
+
+            .philosophy-system {
+              min-height: 420px;
+            }
+
+            .philosophy-ring-one {
+              width: 170px;
+              height: 170px;
+            }
+
+            .philosophy-ring-two {
+              width: 280px;
+              height: 280px;
+            }
+
+            .philosophy-ring-three {
+              width: 390px;
+              height: 390px;
+            }
+
+            .philosophy-center {
+              width: 95px;
+              height: 95px;
+            }
+
+            .philosophy-node {
+              padding: 8px 10px;
+              font-size: 7px;
+            }
+
+            .about-capabilities {
+              padding: 90px 14px;
+            }
+
+            .capabilities-heading h2 {
+              font-size: 49px;
+            }
+
+            .capability-row {
+              grid-template-columns: 50px 1fr auto;
+            }
+
+            .capability-row h3 {
+              font-size: 23px;
+            }
+
+            .about-collage {
+              padding: 0 12px 90px;
+            }
+
+            .collage-large {
+              min-height: 430px;
+            }
+
+            .collage-small {
+              min-height: 300px;
+            }
+
+            .collage-message {
+              min-height: 330px;
+              border-radius: 20px;
+              padding: 22px;
+            }
+
+            .collage-message h3 {
+              font-size: 38px;
+            }
+
+            .about-statement {
+              padding: 90px 14px;
+            }
+
+            .about-statement h2 {
+              font-size: 54px;
+            }
+
+            .statement-bottom {
+              margin-top: 40px;
+            }
+
+            .about-final {
+              padding: 20px 12px 50px;
+            }
+
+            .about-final-inner {
+              min-height: 470px;
+              border-radius: 22px;
+              padding: 28px 22px;
+            }
+
+            .about-final h2 {
+              font-size: 53px;
+            }
+
+            .about-final-inner > a {
+              width: 100%;
+              justify-content: space-between;
+            }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .about-glow,
+            .about-floating-card,
+            .about-marquee-track,
+            .philosophy-center,
+            .philosophy-node {
+              animation: none !important;
+            }
+
+            [data-reveal] {
+              opacity: 1;
+              transform: none;
+            }
+          }
+        `}</style>
+      </main>
+
+      <FooterSection />
+    </>
   );
 }
