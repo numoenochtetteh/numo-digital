@@ -72,22 +72,15 @@ export function ExpertiseSection() {
   };
 
   return (
-    <section className="expertise-section">
+    <section id="services" className="expertise-section">
       <div className="expertise-container">
-        {/* =====================================================
-            HEADING
-        ===================================================== */}
-
         <div className="expertise-heading">
-          <span className="expertise-eyebrow">
-            <span className="expertise-eyebrow-dot" />
-            OUR EXPERTISE
-          </span>
+          <span>Our expertise</span>
 
           <h2>
             We lead when your challenge
             <br />
-            fits these expertise areas.
+            fits these expertise areas
           </h2>
 
           <p>
@@ -95,10 +88,6 @@ export function ExpertiseSection() {
             development to bring your vision to life.
           </p>
         </div>
-
-        {/* =====================================================
-            CARDS
-        ===================================================== */}
 
         <div className="expertise-grid">
           {expertiseCards.map((card, index) => {
@@ -111,8 +100,6 @@ export function ExpertiseSection() {
                 }`}
                 key={card.title}
               >
-                {/* Card heading */}
-
                 <div className="card-title-row">
                   <h3>{card.title}</h3>
 
@@ -130,8 +117,6 @@ export function ExpertiseSection() {
                   </button>
                 </div>
 
-                {/* Video */}
-
                 <div className="expertise-media">
                   <video
                     autoPlay
@@ -143,16 +128,14 @@ export function ExpertiseSection() {
                     aria-label={`${card.title} animated preview`}
                     onCanPlay={(event) => {
                       event.currentTarget.play().catch(() => {
-                        // Muted autoplay can occasionally be delayed
-                        // by the browser.
+                        // Muted autoplay can occasionally be delayed by
+                        // the browser. The loop remains enabled.
                       });
                     }}
                   >
                     <source src={card.video} type="video/mp4" />
                   </video>
                 </div>
-
-                {/* Expanded details */}
 
                 <div
                   className={`card-details ${
@@ -163,7 +146,6 @@ export function ExpertiseSection() {
                     <span className="details-number">0{index + 1} / 04</span>
 
                     <h4>{card.title}</h4>
-
                     <p>{card.description}</p>
 
                     <div className="service-list">
@@ -185,64 +167,34 @@ export function ExpertiseSection() {
       </div>
 
       <style jsx global>{`
-        /* =====================================================
-           SECTION
-        ===================================================== */
-
         .expertise-section {
-          background: #f7f7f5;
-          padding: 110px 24px 130px;
+          background: #f4f4f1;
+          padding: 96px 24px 110px;
           color: #111111;
         }
 
         .expertise-container {
-          width: min(1180px, 100%);
+          width: min(1400px, 100%);
           margin: 0 auto;
         }
 
-        /* =====================================================
-   HEADING
-===================================================== */
-
         .expertise-heading {
-          max-width: 1100px;
           margin: 0 auto 70px;
           text-align: center;
         }
 
-        /* Keep the new badge */
-        .expertise-eyebrow {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 9px;
-          margin-bottom: 30px;
-          border: 1px solid #d4cec1;
-          border-radius: 5px;
-          padding: 8px 12px;
-          color: #5f574f;
-          font-family:
-            ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-          font-size: 9px;
+        .expertise-heading > span {
+          display: block;
+          margin-bottom: 20px;
+          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          font-size: 10px;
           font-weight: 700;
-          letter-spacing: 0.16em;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
         }
 
-        .expertise-eyebrow-dot {
-          display: block;
-          width: 8px;
-          height: 8px;
-          flex-shrink: 0;
-          border-radius: 2px;
-          background: #d9ff25;
-        }
-
-        /* OLD SMALLER HEADING SIZE */
         .expertise-heading h2 {
-          max-width: 1100px;
-          margin: 0 auto;
-
+          margin: 0;
           font-size: clamp(43px, 5vw, 72px);
           font-weight: 700;
           line-height: 0.98;
@@ -257,75 +209,20 @@ export function ExpertiseSection() {
           line-height: 1.35;
         }
 
-        /* TABLET */
-        @media (max-width: 800px) {
-          .expertise-heading {
-            margin-bottom: 50px;
-          }
-
-          .expertise-heading h2 {
-            font-size: 48px;
-          }
-
-          .expertise-heading h2 br {
-            display: none;
-          }
-
-          .expertise-heading p {
-            font-size: 15px;
-          }
-        }
-
-        /* MOBILE */
-        @media (max-width: 480px) {
-          .expertise-eyebrow {
-            margin-bottom: 18px;
-            padding: 6px 9px;
-            font-size: 7px;
-          }
-
-          .expertise-heading h2 {
-            font-size: 42px;
-          }
-
-          .expertise-heading p {
-            max-width: 340px;
-            margin-top: 22px;
-            font-size: 14px;
-          }
-        }
-
-        /* =====================================================
-           GRID
-        ===================================================== */
-
         .expertise-grid {
           display: grid;
-
           grid-template-columns: repeat(2, minmax(0, 1fr));
-
           gap: 14px;
         }
 
-        /* =====================================================
-           CARD
-        ===================================================== */
-
         .expertise-card {
           position: relative;
-
           height: 380px;
-
           overflow: hidden;
-
           border: 1px solid #d7d7d4;
-
           border-radius: 28px;
-
           background: #e9e9e7;
-
           isolation: isolate;
-
           transition:
             transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
             box-shadow 0.4s ease;
@@ -333,72 +230,42 @@ export function ExpertiseSection() {
 
         .expertise-card:hover {
           transform: translateY(-5px);
-
           box-shadow: 0 22px 50px rgba(0, 0, 0, 0.1);
         }
 
-        /* =====================================================
-           CARD TITLE
-        ===================================================== */
-
         .card-title-row {
           position: absolute;
-
           top: 0;
           right: 0;
           left: 0;
-
           z-index: 5;
-
           display: flex;
-
           align-items: center;
-
           justify-content: space-between;
-
           padding: 22px;
-
           pointer-events: none;
         }
 
         .card-title-row h3 {
           margin: 0;
-
           font-size: clamp(21px, 2vw, 29px);
-
           font-weight: 700;
-
           letter-spacing: -0.035em;
         }
 
-        /* =====================================================
-           PLUS BUTTON
-        ===================================================== */
-
         .card-title-row button {
           display: grid;
-
           width: 46px;
           height: 46px;
-
           padding: 0;
-
           place-items: center;
-
           border: 0;
-
           border-radius: 14px;
-
           background: white;
-
           box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
-
           color: #111111;
-
           cursor: pointer;
-
           pointer-events: auto;
-
           transition:
             transform 0.35s ease,
             background 0.35s ease,
@@ -407,50 +274,32 @@ export function ExpertiseSection() {
 
         .card-title-row button:hover {
           transform: rotate(90deg);
-
           background: #111111;
-
           color: white;
         }
 
         .card-title-row button span {
           display: block;
-
           font-size: 26px;
-
           font-weight: 400;
-
           line-height: 1;
         }
 
-        /* =====================================================
-           VIDEO
-        ===================================================== */
-
         .expertise-media {
           position: absolute;
-
           inset: 75px 0 0;
-
           z-index: 1;
-
           display: flex;
-
           align-items: flex-end;
-
           justify-content: center;
-
           overflow: hidden;
         }
 
         .expertise-media video {
           width: 100%;
           height: 100%;
-
           object-fit: contain;
-
           object-position: center bottom;
-
           transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
@@ -458,27 +307,15 @@ export function ExpertiseSection() {
           transform: scale(1.035);
         }
 
-        /* =====================================================
-           OPEN CARD DETAILS
-        ===================================================== */
-
         .card-details {
           position: absolute;
-
           inset: 0;
-
           z-index: 4;
-
           visibility: hidden;
-
           background: #111111;
-
           color: white;
-
           opacity: 0;
-
           transform: translateY(100%);
-
           transition:
             opacity 0.45s ease,
             transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
@@ -487,109 +324,66 @@ export function ExpertiseSection() {
 
         .card-details-visible {
           visibility: visible;
-
           opacity: 1;
-
           transform: translateY(0);
         }
 
         .details-content {
           display: flex;
-
           height: 100%;
-
           padding: 80px 26px 25px;
-
           flex-direction: column;
         }
 
         .details-number {
           color: #858585;
-
           font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-
           font-size: 10px;
-
           letter-spacing: 0.12em;
         }
 
         .details-content h4 {
           margin: auto 0 12px;
-
           font-size: clamp(27px, 3vw, 42px);
-
           line-height: 1;
-
           letter-spacing: -0.05em;
         }
 
         .details-content p {
           max-width: 460px;
-
           margin: 0;
-
           color: #b5b5b5;
-
           font-size: 13px;
-
           line-height: 1.5;
         }
 
-        /* =====================================================
-           SERVICE LIST
-        ===================================================== */
-
         .service-list {
           display: flex;
-
           flex-wrap: wrap;
-
           gap: 7px;
-
           margin-top: 20px;
         }
 
         .service-list > span {
           border: 1px solid #424242;
-
           border-radius: 999px;
-
           padding: 7px 10px;
-
           color: #d5d5d5;
-
           font-size: 9px;
         }
 
-        /* =====================================================
-           START PROJECT LINK
-        ===================================================== */
-
         .details-content a {
           display: flex;
-
           align-items: center;
-
           justify-content: space-between;
-
           margin-top: 18px;
-
           border-top: 1px solid #3b3b3b;
-
           padding-top: 15px;
-
           color: white;
-
           font-size: 12px;
-
           font-weight: 600;
-
           text-decoration: none;
         }
-
-        /* =====================================================
-           TABLET
-        ===================================================== */
 
         @media (max-width: 800px) {
           .expertise-section {
@@ -597,31 +391,11 @@ export function ExpertiseSection() {
           }
 
           .expertise-heading {
-            margin-bottom: 55px;
-          }
-
-          .expertise-eyebrow {
-            margin-bottom: 24px;
-          }
-
-          .expertise-heading h2 {
-            font-size: 56px;
-
-            line-height: 0.94;
-
-            letter-spacing: -0.06em;
+            margin-bottom: 50px;
           }
 
           .expertise-heading h2 br {
             display: none;
-          }
-
-          .expertise-heading p {
-            max-width: 550px;
-
-            margin-top: 28px;
-
-            font-size: 15px;
           }
 
           .expertise-grid {
@@ -630,7 +404,6 @@ export function ExpertiseSection() {
 
           .expertise-card {
             height: 340px;
-
             border-radius: 22px;
           }
 
@@ -640,58 +413,17 @@ export function ExpertiseSection() {
 
           .card-title-row button {
             width: 42px;
-
             height: 42px;
           }
         }
 
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
         @media (max-width: 480px) {
-          .expertise-section {
-            padding: 65px 14px 75px;
-          }
-
-          .expertise-heading {
-            margin-bottom: 42px;
-          }
-
-          .expertise-eyebrow {
-            gap: 7px;
-
-            margin-bottom: 20px;
-
-            padding: 6px 9px;
-
-            font-size: 7px;
-          }
-
-          .expertise-eyebrow-dot {
-            width: 7px;
-
-            height: 7px;
-          }
-
           .expertise-heading h2 {
-            max-width: 390px;
-
-            font-size: clamp(39px, 11vw, 47px);
-
-            line-height: 0.94;
-
-            letter-spacing: -0.06em;
+            font-size: 42px;
           }
 
           .expertise-heading p {
-            max-width: 340px;
-
-            margin-top: 22px;
-
             font-size: 14px;
-
-            line-height: 1.45;
           }
 
           .expertise-card {
@@ -700,7 +432,6 @@ export function ExpertiseSection() {
 
           .card-title-row h3 {
             max-width: 75%;
-
             font-size: 20px;
           }
 
@@ -712,10 +443,6 @@ export function ExpertiseSection() {
             padding: 72px 20px 20px;
           }
         }
-
-        /* =====================================================
-           REDUCED MOTION
-        ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
           .expertise-card,
