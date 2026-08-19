@@ -32,7 +32,7 @@ const projects = [
     description:
       "A premium booking and digital experience created for a London-based hair specialist.",
     image: "/showcase/creative-workspace.jpg",
-    video: "/expertise/product-experience.mp4",
+    video: "/expertise/111.mp4",
     href: "https://pengtresses.vercel.app",
     accent: "#d9ff25",
     layout: "featured",
@@ -45,7 +45,7 @@ const projects = [
     year: "2026",
     description:
       "A professional digital presence for a growing welding electrode manufacturer.",
-    image: "/showcase/coding-workspace.jpg",
+    image: "/showcase/01.jpg",
     href: "https://github.com/numoenochtetteh/power-electrode-ltd",
     accent: "#8fb5ff",
     layout: "standard",
@@ -59,7 +59,7 @@ const projects = [
     description:
       "A modern logistics website focused on credibility, services and customer confidence.",
     image: "/showcase/product-design.jpg",
-    video: "/expertise/tech-websites.mp4",
+    video: "/expertise/6.mp4",
     href: "https://totallog.org",
     accent: "#ff8b67",
     layout: "standard",
@@ -72,7 +72,7 @@ const projects = [
     year: "2026",
     description:
       "A polished jewellery shopping experience built around strong imagery and clean product presentation.",
-    image: "/showcase/creative-workspace.jpg",
+    image: "/showcase/03.jpg",
     href: "#",
     accent: "#c9bfff",
     layout: "wide",
@@ -85,7 +85,7 @@ const projects = [
     year: "2026",
     description:
       "A minimal architectural portfolio designed to let projects and imagery lead the experience.",
-    image: "/showcase/product-design.jpg",
+    image: "/showcase/02.jpg",
     href: "https://kent-architects.vercel.app",
     accent: "#79dcb5",
     layout: "standard",
@@ -99,7 +99,7 @@ const projects = [
     description:
       "A modern operations interface designed around clarity, tracking and business-critical information.",
     image: "/showcase/coding-workspace.jpg",
-    video: "/expertise/fintech-solutions.mp4",
+    video: "/expertise/03.mp4",
     href: "#",
     accent: "#ffd66b",
     layout: "standard",
@@ -200,10 +200,7 @@ export default function WorkPage() {
                   playsInline
                   poster="/showcase/creative-workspace.jpg"
                 >
-                  <source
-                    src="/expertise/product-experience.mp4"
-                    type="video/mp4"
-                  />
+                  <source src="/expertise/1.mp4" type="video/mp4" />
                 </video>
               </div>
             </div>

@@ -10,7 +10,7 @@ const projects = [
     industry: "Beauty",
     description:
       "Premium booking and digital experience for a London-based hair specialist.",
-    image: "/showcase/creative-workspace.jpg",
+    image: "/showcase/3.png",
     href: "https://pengtresses.vercel.app",
   },
   {
@@ -19,7 +19,7 @@ const projects = [
     industry: "Manufacturing",
     description:
       "Corporate website for a growing welding electrode manufacturer.",
-    image: "/showcase/coding-workspace.jpg",
+    image: "/showcase/8.png",
     href: "https://github.com/numoenochtetteh/power-electrode-ltd",
   },
   {
@@ -28,11 +28,10 @@ const projects = [
     industry: "Logistics",
     description:
       "A modern business website focused on trust, services and credibility.",
-    image: "/showcase/product-design.jpg",
+    image: "/showcase/7.png",
     href: "https://totallog.org",
   },
 ];
-
 export function WorkSection() {
   return (
     <section id="work" className="portfolio-work">
