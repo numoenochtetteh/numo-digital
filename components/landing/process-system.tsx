@@ -55,7 +55,10 @@ export function ProcessSystem() {
   return (
     <section className="numo-process-system">
       <div className="numo-process-container">
-        {/* HEADER */}
+        {/* =====================================================
+            HEADER
+        ===================================================== */}
+
         <header className="numo-process-header">
           <span className="numo-process-eyebrow">
             <span />
@@ -74,10 +77,16 @@ export function ProcessSystem() {
           </p>
         </header>
 
-        {/* BOARD */}
+        {/* =====================================================
+            BOARD
+        ===================================================== */}
+
         <div className="process-board-wrapper">
           <div className="process-board">
-            {/* CENTER */}
+            {/* =================================================
+                CENTER
+            ================================================= */}
+
             <div className="process-center">
               <div className="connector connector-top-left" />
               <div className="connector connector-top-right" />
@@ -117,7 +126,10 @@ export function ProcessSystem() {
               </span>
             </div>
 
-            {/* DISCOVER */}
+            {/* =================================================
+                DISCOVER
+            ================================================= */}
+
             <article className="process-card process-card-discover">
               <div className="process-card-top">
                 <span>{processCards[0].number}</span>
@@ -139,7 +151,6 @@ export function ProcessSystem() {
                 </div>
 
                 <div className="discover-tech">
-                  {/* NEXT */}
                   <div className="discover-tech-item" title="Next.js">
                     <svg viewBox="0 0 128 128" aria-hidden="true">
                       <circle cx="64" cy="64" r="64" fill="#000" />
@@ -150,7 +161,6 @@ export function ProcessSystem() {
                     </svg>
                   </div>
 
-                  {/* TAILWIND */}
                   <div className="discover-tech-item" title="Tailwind CSS">
                     <svg viewBox="0 0 54 33" aria-hidden="true">
                       <path
@@ -168,12 +178,10 @@ export function ProcessSystem() {
                     </svg>
                   </div>
 
-                  {/* TYPESCRIPT */}
                   <div className="discover-tech-item" title="TypeScript">
                     <div className="typescript-logo">TS</div>
                   </div>
 
-                  {/* SUPABASE */}
                   <div className="discover-tech-item" title="Supabase">
                     <svg viewBox="0 0 109 113" aria-hidden="true">
                       <path
@@ -191,7 +199,10 @@ export function ProcessSystem() {
               </div>
             </article>
 
-            {/* DESIGN */}
+            {/* =================================================
+                DESIGN
+            ================================================= */}
+
             <article className="process-card process-card-design">
               <div className="process-card-top">
                 <span>{processCards[1].number}</span>
@@ -231,7 +242,10 @@ export function ProcessSystem() {
               </div>
             </article>
 
-            {/* DEVELOP */}
+            {/* =================================================
+                DEVELOP
+            ================================================= */}
+
             <article className="process-card process-card-develop">
               <div className="process-card-top">
                 <span>{processCards[2].number}</span>
@@ -270,7 +284,10 @@ export function ProcessSystem() {
               </div>
             </article>
 
-            {/* LAUNCH */}
+            {/* =================================================
+                LAUNCH
+            ================================================= */}
+
             <article className="process-card process-card-launch">
               <div className="process-card-top">
                 <span>{processCards[3].number}</span>
@@ -311,7 +328,10 @@ export function ProcessSystem() {
           </div>
         </div>
 
-        {/* BOTTOM */}
+        {/* =====================================================
+            BOTTOM
+        ===================================================== */}
+
         <div className="process-bottom">
           <p>
             Clear process. No guesswork. Just thoughtful digital experiences.
@@ -325,6 +345,10 @@ export function ProcessSystem() {
       </div>
 
       <style jsx global>{`
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
         .numo-process-system {
           position: relative;
           overflow: hidden;
@@ -338,7 +362,9 @@ export function ProcessSystem() {
           margin: 0 auto;
         }
 
-        /* HEADER */
+        /* =====================================================
+           HEADER
+        ===================================================== */
 
         .numo-process-header {
           max-width: 900px;
@@ -386,7 +412,9 @@ export function ProcessSystem() {
           line-height: 1.65;
         }
 
-        /* BOARD */
+        /* =====================================================
+           BOARD
+        ===================================================== */
 
         .process-board-wrapper {
           position: relative;
@@ -405,7 +433,9 @@ export function ProcessSystem() {
           background: #d9d6cc;
         }
 
-        /* CENTER */
+        /* =====================================================
+           CENTER
+        ===================================================== */
 
         .process-center {
           position: absolute;
@@ -486,7 +516,9 @@ export function ProcessSystem() {
           }
         }
 
-        /* CENTER LOGO */
+        /* =====================================================
+           CENTER LOGO
+        ===================================================== */
 
         .process-center-logo {
           position: absolute;
@@ -580,7 +612,9 @@ export function ProcessSystem() {
           transform: translateX(-50%);
         }
 
-        /* CONNECTORS */
+        /* =====================================================
+           CONNECTORS
+        ===================================================== */
 
         .connector {
           position: absolute;
@@ -622,7 +656,9 @@ export function ProcessSystem() {
           border-radius: 30px 0 0 0;
         }
 
-        /* CARDS */
+        /* =====================================================
+           CARDS
+        ===================================================== */
 
         .process-card {
           position: relative;
@@ -715,7 +751,9 @@ export function ProcessSystem() {
           margin-top: auto;
         }
 
-        /* DISCOVER */
+        /* =====================================================
+           DISCOVER
+        ===================================================== */
 
         .discover-preview {
           padding-top: 14px;
@@ -780,7 +818,9 @@ export function ProcessSystem() {
           line-height: 1;
         }
 
-        /* DESIGN */
+        /* =====================================================
+           DESIGN
+        ===================================================== */
 
         .design-preview {
           padding-top: 12px;
@@ -851,7 +891,9 @@ export function ProcessSystem() {
           background: #e7e4dc;
         }
 
-        /* DEVELOP */
+        /* =====================================================
+           DEVELOP
+        ===================================================== */
 
         .develop-preview {
           padding-top: 12px;
@@ -886,7 +928,9 @@ export function ProcessSystem() {
           color: #d9ff25;
         }
 
-        /* LAUNCH */
+        /* =====================================================
+           LAUNCH
+        ===================================================== */
 
         .launch-preview {
           padding-top: 12px;
@@ -949,7 +993,9 @@ export function ProcessSystem() {
           font-size: 7px;
         }
 
-        /* BOTTOM */
+        /* =====================================================
+           BOTTOM
+        ===================================================== */
 
         .process-bottom {
           display: flex;
@@ -987,7 +1033,9 @@ export function ProcessSystem() {
           transform: translate(3px, -3px);
         }
 
-        /* TABLET */
+        /* =====================================================
+           TABLET
+        ===================================================== */
 
         @media (max-width: 950px) and (min-width: 621px) {
           .numo-process-system {
@@ -1033,11 +1081,14 @@ export function ProcessSystem() {
           }
         }
 
-        /* MOBILE */
+        /* =====================================================
+           MOBILE
+           MATCHES EXPERTISE CARD SIZE
+        ===================================================== */
 
         @media (max-width: 620px) {
           .numo-process-system {
-            padding: 80px 12px 82px;
+            padding: 80px 12px 90px;
           }
 
           .numo-process-container {
@@ -1045,9 +1096,13 @@ export function ProcessSystem() {
             max-width: 100%;
           }
 
+          /* ===========================
+             MOBILE HEADER
+          =========================== */
+
           .numo-process-header {
             max-width: 100%;
-            margin: 0 auto 44px;
+            margin: 0 auto 50px;
             padding: 0;
             text-align: center;
           }
@@ -1059,10 +1114,10 @@ export function ProcessSystem() {
             border-radius: 6px;
             background: rgba(255, 255, 255, 0.34);
             padding: 10px 14px;
+            color: #3f3b36;
             font-size: 9px;
             font-weight: 700;
             letter-spacing: 0.2em;
-            color: #3f3b36;
           }
 
           .numo-process-eyebrow > span {
@@ -1071,7 +1126,7 @@ export function ProcessSystem() {
           }
 
           .numo-process-header h2 {
-            max-width: 360px;
+            max-width: 390px;
             margin: 0 auto;
             font-size: 42px;
             font-weight: 700;
@@ -1084,65 +1139,82 @@ export function ProcessSystem() {
           }
 
           .numo-process-header p {
-            max-width: 335px;
+            max-width: 350px;
             margin: 28px auto 0;
             color: #555555;
             font-size: 14px;
             line-height: 1.35;
           }
 
-          /* BIGGER MOBILE PROCESS BOARD */
+          /* ===========================
+             MOBILE BOARD WRAPPER
+          =========================== */
 
           .process-board-wrapper {
             position: relative;
-            width: calc(100% + 8px);
-            max-width: none;
-            height: 245px;
-            margin-left: -4px;
-            overflow: hidden;
+            width: 100%;
+            height: 300px;
+            margin: 0 auto;
+            overflow: visible;
           }
 
+          /* ===========================
+             MOBILE BOARD
+          =========================== */
+
           .process-board {
-            position: absolute;
-            top: 0;
-            left: 50%;
+            position: relative;
+            top: auto;
+            left: auto;
 
             display: grid;
 
-            width: 1180px;
-            min-height: 500px;
+            width: 100%;
+            height: 300px;
+            min-height: 300px;
 
-            grid-template-columns: 295px 1fr 295px;
-            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 29% 42% 29%;
+            grid-template-rows: repeat(2, minmax(0, 1fr));
 
-            gap: 12px;
+            gap: 5px;
 
-            border: 12px solid #d9d6cc;
-            border-radius: 26px;
+            border: 5px solid #d9d6cc;
+            border-radius: 22px;
 
             background: #d9d6cc;
 
-            transform: translateX(-50%) scale(0.315);
-            transform-origin: top center;
+            transform: none;
           }
+
+          /* ===========================
+             MOBILE CENTER
+          =========================== */
 
           .process-center {
             position: absolute;
-            inset: 0 307px;
+
+            top: 5px;
+            right: calc(29% + 5px);
+            bottom: 5px;
+            left: calc(29% + 5px);
+
             display: flex;
-            min-height: unset;
+
+            min-height: 0;
+
             align-items: center;
             justify-content: center;
+
             overflow: hidden;
-            border-radius: 0;
+
+            border-radius: 7px;
+
             background: #dfdcd2;
           }
 
-          .process-card {
-            min-height: 238px;
-            padding: 20px 22px;
-            border-radius: 17px;
-          }
+          /* ===========================
+             MOBILE CARD POSITIONS
+          =========================== */
 
           .process-card-discover {
             grid-column: 1;
@@ -1164,24 +1236,332 @@ export function ProcessSystem() {
             grid-row: 2;
           }
 
-          .connector {
-            display: block;
+          /* ===========================
+             MOBILE CARDS
+          =========================== */
+
+          .process-card {
+            min-width: 0;
+            min-height: 0;
+            height: auto;
+
+            padding: 10px;
+
+            border-radius: 10px;
+
+            box-shadow: none;
           }
 
+          .process-card:hover {
+            transform: none;
+            box-shadow: none;
+          }
+
+          .process-card-top {
+            margin-bottom: 7px;
+          }
+
+          .process-card-top > span:first-child {
+            font-size: 6px;
+          }
+
+          .process-icon-bubble {
+            width: 21px;
+            height: 21px;
+          }
+
+          .process-icon-bubble svg {
+            width: 10px;
+            height: 10px;
+          }
+
+          .process-card-copy h3 {
+            margin-bottom: 4px;
+            font-size: 10px;
+            line-height: 1;
+          }
+
+          .process-card-copy p {
+            max-width: 100%;
+            font-size: 5.5px;
+            line-height: 1.35;
+          }
+
+          .process-card-preview {
+            margin-top: auto;
+          }
+
+          /* ===========================
+             MOBILE DISCOVER
+          =========================== */
+
+          .discover-preview {
+            padding-top: 6px;
+          }
+
+          .mini-search {
+            gap: 4px;
+
+            border-radius: 5px;
+
+            padding: 5px;
+
+            font-size: 4.5px;
+          }
+
+          .mini-search svg {
+            width: 7px;
+            height: 7px;
+          }
+
+          .discover-tech {
+            gap: 3px;
+            margin-top: 4px;
+          }
+
+          .discover-tech-item {
+            width: 18px;
+            height: 18px;
+
+            border-radius: 5px;
+
+            box-shadow: none;
+          }
+
+          .discover-tech-item svg {
+            width: 10px;
+            height: 10px;
+          }
+
+          .typescript-logo {
+            width: 10px;
+            height: 10px;
+
+            padding: 1px;
+
+            font-size: 4px;
+          }
+
+          /* ===========================
+             MOBILE DESIGN
+          =========================== */
+
+          .design-preview {
+            padding-top: 5px;
+          }
+
+          .design-window {
+            border-radius: 5px;
+          }
+
+          .design-window-top {
+            gap: 2px;
+            padding: 3px;
+          }
+
+          .design-window-top span {
+            width: 3px;
+            height: 3px;
+          }
+
+          .design-screen {
+            min-height: 38px;
+          }
+
+          .design-sidebar {
+            width: 14px;
+          }
+
+          .design-content {
+            padding: 5px;
+          }
+
+          .design-heading {
+            height: 4px;
+          }
+
+          .design-copy {
+            height: 2px;
+            margin-top: 3px;
+          }
+
+          .design-boxes {
+            gap: 3px;
+            margin-top: 5px;
+          }
+
+          .design-boxes span {
+            height: 15px;
+            border-radius: 3px;
+          }
+
+          /* ===========================
+             MOBILE DEVELOP
+          =========================== */
+
+          .develop-preview {
+            padding-top: 5px;
+          }
+
+          .code-window {
+            border-radius: 5px;
+
+            padding: 6px;
+
+            font-size: 3.8px;
+            line-height: 1.7;
+          }
+
+          .code-number {
+            width: 12px;
+          }
+
+          /* ===========================
+             MOBILE LAUNCH
+          =========================== */
+
+          .launch-preview {
+            padding-top: 5px;
+          }
+
+          .launch-browser {
+            border-radius: 5px;
+          }
+
+          .launch-browser-bar {
+            gap: 2px;
+            padding: 3px;
+          }
+
+          .launch-browser-bar span {
+            width: 3px;
+            height: 3px;
+          }
+
+          .launch-browser-content {
+            gap: 5px;
+            padding: 7px 5px;
+          }
+
+          .launch-globe {
+            width: 20px;
+            height: 20px;
+
+            border-radius: 5px;
+          }
+
+          .launch-globe svg {
+            width: 11px;
+            height: 11px;
+          }
+
+          .launch-browser-content strong {
+            font-size: 5px;
+          }
+
+          .launch-browser-content small {
+            margin-top: 1px;
+            font-size: 3.5px;
+          }
+
+          .launch-browser-content > svg {
+            width: 7px;
+            height: 7px;
+          }
+
+          /* ===========================
+             MOBILE CENTER PIXELS
+          =========================== */
+
           .process-pixel-grid {
-            width: 405px;
-            gap: 7px;
+            width: 126px;
+
+            grid-template-columns: repeat(12, 1fr);
+
+            gap: 3px;
+
+            opacity: 0.86;
           }
 
           .process-pixel {
-            width: 22px;
-            height: 22px;
-            border-radius: 6px;
+            width: 7px;
+            height: 7px;
+
+            border-radius: 2px;
           }
 
+          .pixel-yellow {
+            box-shadow: 0 0 10px rgba(217, 255, 37, 0.25);
+          }
+
+          /* ===========================
+             MOBILE CENTER LOGO
+          =========================== */
+
           .process-center-logo {
-            gap: 13px;
-            padding: 13px 18px;
+            gap: 5px;
+
+            border-radius: 8px;
+
+            padding: 6px 8px;
+          }
+
+          .process-logo-symbol {
+            width: 16px;
+            height: 16px;
+          }
+
+          .process-logo-symbol span {
+            width: 6px;
+            height: 6px;
+          }
+
+          .process-logo-symbol span:nth-child(1) {
+            top: 0;
+            left: 5px;
+          }
+
+          .process-logo-symbol span:nth-child(2) {
+            top: 5px;
+            left: 0;
+          }
+
+          .process-logo-symbol span:nth-child(3) {
+            top: 5px;
+            right: 0;
+          }
+
+          .process-logo-symbol span:nth-child(4) {
+            bottom: 0;
+            left: 5px;
+          }
+
+          .process-logo-symbol span:nth-child(5) {
+            top: 5px;
+            left: 5px;
+          }
+
+          .process-center-text strong {
+            font-size: 8px;
+          }
+
+          .process-center-text small {
+            margin-top: 2px;
+            font-size: 3px;
+          }
+
+          .process-center-label {
+            bottom: 4px;
+
+            border-radius: 3px;
+
+            padding: 3px 6px;
+
+            font-size: 3.5px;
+          }
+
+          .connector {
+            display: none;
           }
 
           .process-bottom {
@@ -1189,54 +1569,93 @@ export function ProcessSystem() {
           }
         }
 
-        /* SMALLER PHONES — KEEP THE SAME WIDE LOOK */
+        /* =====================================================
+           SMALL PHONES
+        ===================================================== */
 
         @media (max-width: 480px) {
           .process-board-wrapper {
-            width: calc(100% + 8px);
-            max-width: none;
-            height: 235px;
-            margin-left: -4px;
+            height: 300px;
           }
 
           .process-board {
-            transform: translateX(-50%) scale(0.305);
+            height: 300px;
+            min-height: 300px;
           }
         }
 
         @media (max-width: 420px) {
+          .numo-process-header h2 {
+            font-size: 40px;
+          }
+
           .process-board-wrapper {
-            width: calc(100% + 8px);
-            max-width: none;
-            height: 225px;
-            margin-left: -4px;
+            height: 295px;
           }
 
           .process-board {
-            transform: translateX(-50%) scale(0.295);
+            height: 295px;
+            min-height: 295px;
           }
 
-          .numo-process-header h2 {
-            font-size: 40px;
+          .process-card {
+            padding: 9px;
+          }
+
+          .process-pixel-grid {
+            width: 118px;
+          }
+
+          .process-pixel {
+            width: 6.5px;
+            height: 6.5px;
           }
         }
 
         @media (max-width: 390px) {
-          .process-board-wrapper {
-            width: calc(100% + 8px);
-            max-width: none;
-            height: 215px;
-            margin-left: -4px;
-          }
-
-          .process-board {
-            transform: translateX(-50%) scale(0.285);
-          }
-
           .numo-process-header h2 {
             font-size: 38px;
           }
+
+          .numo-process-header p {
+            max-width: 320px;
+            font-size: 13px;
+          }
+
+          .process-board-wrapper {
+            height: 285px;
+          }
+
+          .process-board {
+            height: 285px;
+            min-height: 285px;
+          }
+
+          .process-card {
+            padding: 8px;
+          }
+
+          .process-card-copy h3 {
+            font-size: 9px;
+          }
+
+          .process-card-copy p {
+            font-size: 5px;
+          }
+
+          .process-pixel-grid {
+            width: 110px;
+          }
+
+          .process-pixel {
+            width: 6px;
+            height: 6px;
+          }
         }
+
+        /* =====================================================
+           REDUCED MOTION
+        ===================================================== */
 
         @media (prefers-reduced-motion: reduce) {
           .process-card,
