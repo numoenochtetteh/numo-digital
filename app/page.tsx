@@ -10,17 +10,19 @@ import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { CtaSection } from "@/components/landing/cta-section";
 import { ProjectContact } from "@/components/landing/project-contact";
 import { FooterSection } from "@/components/landing/footer-section";
-import { AgencyHeroSection } from "@/components/landing/agency-hero-section";
+// import { AgencyHeroSection } from "@/components/landing/agency-hero-section";
 import { ProcessSystem } from "@/components/landing/process-system";
-
+// import { AgencyHero } from "@/components/landing/agency-hero";
+import { GalleryHero } from "@/components/landing/gallery-hero";
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden noise-overlay">
       {/* Navigation */}
       <Navigation />
-      <AgencyHeroSection />
+      <GalleryHero />
+
       {/* Hero */}
-      {/* <CodaHeroSection /> */}
+      {/* <AgencyHero /> */}
 
       {/* Experience / Client Marquee */}
       {/* <ExperienceMarquee /> */}
