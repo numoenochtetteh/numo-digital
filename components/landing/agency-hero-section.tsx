@@ -59,8 +59,8 @@ export function AgencyHeroSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#fafaf9] pt-16 text-black lg:pt-20">
-      <div className="mx-auto grid min-h-[760px] w-full max-w-[1660px] items-center gap-16 px-6 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:px-16 xl:gap-24 xl:px-24">
+    <section className="relative overflow-hidden bg-[#f4f4f1] pt-16 text-black lg:pt-20">
+      <div className="mx-auto grid min-h-[760px] w-full max-w-[1400px] items-center gap-16 px-3 py-16 sm:px-[18px] lg:grid-cols-[0.95fr_1.05fr] lg:px-7 xl:gap-24">
         {/* Left content */}
         <div
           className={`relative z-10 max-w-[650px] transition-all duration-700 ${

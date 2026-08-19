@@ -122,7 +122,7 @@ export default function AboutPage() {
                 and create better digital experiences.
               </p>
 
-              <Link href="/#contact">
+              <Link href="/contact">
                 Start a project
                 <ArrowRight size={17} />
               </Link>
@@ -518,7 +518,7 @@ export default function AboutPage() {
                 experience contributes to how people perceive your business.
               </p>
 
-              <Link href="/#contact">
+              <Link href="/contact">
                 Let&apos;s work together
                 <ArrowUpRight size={17} />
               </Link>
@@ -544,7 +544,7 @@ export default function AboutPage() {
               </h2>
             </div>
 
-            <Link href="/#contact">
+            <Link href="/contact">
               Start a project
               <span>
                 <ArrowUpRight size={22} />

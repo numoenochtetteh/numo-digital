@@ -154,7 +154,7 @@ export function ExpertiseSection() {
                       ))}
                     </div>
 
-                    <a href="/#contact">
+                    <a href="/contact">
                       Start a project
                       <span>↗</span>
                     </a>
@@ -169,7 +169,7 @@ export function ExpertiseSection() {
       <style jsx global>{`
         .expertise-section {
           background: #f4f4f1;
-          padding: 96px 24px 110px;
+          padding: 96px 28px 110px;
           color: #111111;
         }
 
@@ -387,7 +387,7 @@ export function ExpertiseSection() {
 
         @media (max-width: 800px) {
           .expertise-section {
-            padding: 80px 16px 90px;
+            padding: 80px 18px 90px;
           }
 
           .expertise-heading {
@@ -418,6 +418,11 @@ export function ExpertiseSection() {
         }
 
         @media (max-width: 480px) {
+          .expertise-section {
+            padding-right: 12px;
+            padding-left: 12px;
+          }
+
           .expertise-heading h2 {
             font-size: 42px;
           }

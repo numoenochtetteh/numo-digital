@@ -180,12 +180,12 @@ export default function ServicesPage() {
             </p>
 
             <div className="hero-actions">
-              <Link href="/#contact" className="hero-primary">
+              <Link href="/contact" className="hero-primary">
                 Start a project
                 <ArrowRight size={17} />
               </Link>
 
-              <Link href="/#work" className="hero-secondary">
+              <Link href="/work" className="hero-secondary">
                 View our work
               </Link>
             </div>
@@ -373,7 +373,7 @@ export default function ServicesPage() {
                         ))}
                       </div>
 
-                      <Link href="/#contact">
+                      <Link href="/contact">
                         <span>Start a project</span>
 
                         <span className="round-arrow">
@@ -546,7 +546,7 @@ export default function ServicesPage() {
               </h2>
             </div>
 
-            <Link href="/#contact">
+            <Link href="/contact">
               Start a project
               <span>
                 <ArrowUpRight size={21} />

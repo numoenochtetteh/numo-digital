@@ -123,18 +123,18 @@ import { AnimatedWave } from "./animated-wave";
 
 const footerLinks = {
   Explore: [
-    { name: "Work", href: "#work" },
-    { name: "Services", href: "#services" },
-    { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Work", href: "/work" },
+    { name: "Services", href: "/services" },
+    { name: "About", href: "/about" },
+    { name: "Contact", href: "/contact" },
   ],
 
   Services: [
-    { name: "Web Design", href: "#services" },
-    { name: "Web Development", href: "#services" },
-    { name: "UI / UX Design", href: "#services" },
-    { name: "SEO", href: "#services" },
-    { name: "Branding", href: "#services" },
+    { name: "Web Design", href: "/services" },
+    { name: "Web Development", href: "/services" },
+    { name: "UI / UX Design", href: "/services" },
+    { name: "SEO", href: "/services" },
+    { name: "Branding", href: "/services" },
   ],
 
   Social: [
@@ -171,7 +171,7 @@ export function FooterSection() {
             </h2>
           </div>
 
-          <a href="#contact" className="numo-footer-project-button">
+          <a href="/contact" className="numo-footer-project-button">
             <span>Start a project</span>
 
             <span className="numo-footer-project-icon">
@@ -272,7 +272,7 @@ export function FooterSection() {
           z-index: 2;
           width: min(1400px, 100%);
           margin: 0 auto;
-          padding: 0 30px;
+          padding: 0 28px;
         }
 
         /* ========================================================

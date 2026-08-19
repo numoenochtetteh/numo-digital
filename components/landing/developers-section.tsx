@@ -276,7 +276,7 @@ export function DevelopersSection() {
   };
 
   return (
-    <div className="bg-[#f4f4f1] px-3 py-3 sm:px-4">
+    <div className="bg-[#f4f4f1] px-3 py-3 sm:px-[18px] lg:px-7">
       <section
         id="development"
         ref={sectionRef}

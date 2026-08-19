@@ -317,7 +317,7 @@ export function ProcessSystem() {
             Clear process. No guesswork. Just thoughtful digital experiences.
           </p>
 
-          <a href="#contact">
+          <a href="/contact">
             Start your project
             <ArrowUpRight size={15} />
           </a>
@@ -328,13 +328,13 @@ export function ProcessSystem() {
         .numo-process-system {
           position: relative;
           overflow: hidden;
-          background: #f5f3ed;
-          padding: 95px 24px;
+          background: #f4f4f1;
+          padding: 95px 28px;
           color: #28221d;
         }
 
         .numo-process-container {
-          width: min(1180px, 100%);
+          width: min(1400px, 100%);
           margin: 0 auto;
         }
 
@@ -1034,7 +1034,7 @@ export function ProcessSystem() {
 
         @media (max-width: 620px) {
           .numo-process-system {
-            padding: 52px 0 58px;
+            padding: 52px 12px 58px;
           }
 
           .numo-process-container {

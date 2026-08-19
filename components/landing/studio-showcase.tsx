@@ -54,7 +54,7 @@ export function StudioShowcase() {
             </p>
           </div>
 
-          <a href="#contact" className="showcase-button">
+          <a href="/contact" className="showcase-button">
             <span>Start a project</span>
             <span aria-hidden="true">↗</span>
           </a>

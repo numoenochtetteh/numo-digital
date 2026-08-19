@@ -249,7 +249,7 @@ export function ServicesShowcase() {
         }
       `}</style>
 
-      <div className="mx-auto w-full max-w-[1600px] px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto w-full max-w-[1400px] px-3 sm:px-[18px] lg:px-7">
         {/* ======================================================
             SECTION HEADING
         ====================================================== */}
@@ -379,7 +379,7 @@ export function ServicesShowcase() {
                 </Link>
 
                 <Link
-                  href="#work"
+                  href="/work"
                   className="inline-flex h-12 items-center justify-center rounded-full border border-white/30 bg-white/5 px-6 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
                 >
                   View our work

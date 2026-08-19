@@ -101,7 +101,7 @@ export function Navigation() {
           {/* Desktop CTA */}
           <div className="hidden items-center gap-4 md:flex">
             <a
-              href="#work"
+              href="/work"
               className={`text-black/60 transition-all duration-300 hover:text-black ${
                 isScrolled ? "text-xs" : "text-sm"
               }`}
@@ -110,7 +110,7 @@ export function Navigation() {
             </a>
 
             <a
-              href="#contact"
+              href="/contact"
               className={`group inline-flex items-center justify-center gap-2 rounded-full bg-black font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:bg-black/80 ${
                 isScrolled ? "h-10 px-5 text-xs" : "h-12 px-6 text-sm"
               }`}
@@ -191,7 +191,7 @@ export function Navigation() {
 
             <div className="flex flex-col gap-3 sm:flex-row">
               <a
-                href="#work"
+                href="/work"
                 onClick={closeMobileMenu}
                 className="inline-flex h-13 flex-1 items-center justify-center rounded-full border border-black/15 bg-white px-6 text-sm font-medium text-black transition-colors hover:border-black"
               >
@@ -199,7 +199,7 @@ export function Navigation() {
               </a>
 
               <a
-                href="#contact"
+                href="/contact"
                 onClick={closeMobileMenu}
                 className="group inline-flex h-13 flex-1 items-center justify-center gap-2 rounded-full bg-black px-6 text-sm font-medium text-white transition-all hover:bg-black/80"
               >

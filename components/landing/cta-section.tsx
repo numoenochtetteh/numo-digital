@@ -41,7 +41,7 @@ export function CtaSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#f4f4f1] px-3 py-4 sm:px-4 lg:py-6"
+      className="relative overflow-hidden bg-[#f4f4f1] px-3 py-4 sm:px-[18px] lg:px-7 lg:py-6"
     >
       <style jsx>{`
         .cta-orb-one {

@@ -207,7 +207,7 @@ export function WorkSection() {
                 look serious.
               </h3>
 
-              <a href="#contact">
+              <a href="/contact">
                 Start a project
                 <ArrowUpRight size={17} />
               </a>
@@ -232,7 +232,7 @@ export function WorkSection() {
             Branding
           </p>
 
-          <a href="#contact">
+          <a href="/contact">
             Let&apos;s work together
             <ArrowUpRight size={15} />
           </a>
@@ -254,7 +254,7 @@ export function WorkSection() {
         }
 
         .portfolio-container {
-          width: min(1380px, 100%);
+          width: min(1400px, 100%);
           margin: 0 auto;
         }
 

@@ -634,7 +634,7 @@ export default function WorkPage() {
                 understand and easier to trust.
               </p>
 
-              <Link href="/#contact">
+              <Link href="/contact">
                 Start a project
                 <ArrowUpRight size={17} />
               </Link>
@@ -660,7 +660,7 @@ export default function WorkPage() {
               </h2>
             </div>
 
-            <Link href="/#contact">
+            <Link href="/contact">
               Start a project
               <span>
                 <ArrowUpRight size={22} />
