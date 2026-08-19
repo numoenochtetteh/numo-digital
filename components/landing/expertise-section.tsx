@@ -75,7 +75,10 @@ export function ExpertiseSection() {
     <section id="services" className="expertise-section">
       <div className="expertise-container">
         <div className="expertise-heading">
-          <span>Our expertise</span>
+          <div className="expertise-badge">
+            <span className="expertise-badge-dot" />
+            <span>Our expertise</span>
+          </div>
 
           <h2>
             We lead when your challenge
@@ -183,14 +186,30 @@ export function ExpertiseSection() {
           text-align: center;
         }
 
-        .expertise-heading > span {
-          display: block;
-          margin-bottom: 20px;
+        .expertise-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin-bottom: 26px;
+          border: 1px solid #d2cec5;
+          border-radius: 6px;
+          background: rgba(255, 255, 255, 0.34);
+          padding: 10px 14px;
           font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-          font-size: 10px;
+          font-size: 9px;
           font-weight: 700;
           letter-spacing: 0.2em;
           text-transform: uppercase;
+          color: #3f3b36;
+        }
+
+        .expertise-badge-dot {
+          width: 9px;
+          height: 9px;
+          flex-shrink: 0;
+          border-radius: 2px;
+          background: #d9ff25;
         }
 
         .expertise-heading h2 {
