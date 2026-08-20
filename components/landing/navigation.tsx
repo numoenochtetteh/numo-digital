@@ -141,7 +141,10 @@ export function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* =====================================================
+          MOBILE MENU
+      ====================================================== */}
+
       <div
         className={`fixed inset-0 z-40 bg-[#f7f7f3] transition-all duration-500 md:hidden ${
           isMobileMenuOpen
@@ -149,7 +152,7 @@ export function Navigation() {
             : "pointer-events-none invisible opacity-0"
         }`}
       >
-        <div className="flex min-h-[100dvh] flex-col px-6 pb-8 pt-28 sm:px-8">
+        <div className="flex min-h-[100dvh] flex-col px-6 pb-7 pt-28 sm:px-8">
           {/* Mobile links */}
           <div className="flex flex-1 flex-col justify-center gap-3">
             {navLinks.map((link, index) => (
@@ -173,7 +176,10 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Mobile bottom area */}
+          {/* =====================================================
+              MOBILE BOTTOM AREA
+          ====================================================== */}
+
           <div
             className={`border-t border-black/10 pt-6 transition-all duration-500 ${
               isMobileMenuOpen
@@ -184,16 +190,17 @@ export function Navigation() {
               transitionDelay: isMobileMenuOpen ? "380ms" : "0ms",
             }}
           >
-            <p className="mb-5 max-w-[320px] text-sm leading-relaxed text-black/55">
+            <p className="mb-6 max-w-[320px] text-[13px] leading-[1.65] text-black/55">
               Have a project in mind? Let&apos;s create a website that supports
               your business growth.
             </p>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
+            {/* Buttons */}
+            <div className="flex w-full flex-col gap-3">
               <a
                 href="/work"
                 onClick={closeMobileMenu}
-                className="inline-flex h-13 flex-1 items-center justify-center rounded-full border border-black/15 bg-white px-6 text-sm font-medium text-black transition-colors hover:border-black"
+                className="inline-flex h-[52px] w-full items-center justify-center rounded-full border border-black/15 bg-white px-6 text-[13px] font-medium text-black shadow-[0_4px_14px_rgba(0,0,0,0.025)] transition-all duration-300 hover:border-black/30 hover:bg-black/[0.02]"
               >
                 View our work
               </a>
@@ -201,16 +208,18 @@ export function Navigation() {
               <a
                 href="/contact"
                 onClick={closeMobileMenu}
-                className="group inline-flex h-13 flex-1 items-center justify-center gap-2 rounded-full bg-black px-6 text-sm font-medium text-white transition-all hover:bg-black/80"
+                className="group inline-flex h-[52px] w-full items-center justify-center gap-2 rounded-full bg-black px-6 text-[13px] font-medium text-white shadow-[0_8px_20px_rgba(0,0,0,0.08)] transition-all duration-300 hover:bg-black/80"
               >
                 Start a project
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
 
-            <div className="mt-8 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-black/40">
-              <span>Ghana</span>
-              <span>United Kingdom</span>
+            {/* Location */}
+            <div className="mt-7 flex items-center justify-end border-t border-black/[0.06] pt-5">
+              <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-black/40">
+                Accra, Ghana
+              </span>
             </div>
           </div>
         </div>

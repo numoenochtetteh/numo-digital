@@ -224,10 +224,7 @@ export default function ServicesPage() {
                       playsInline
                       poster="/expertise/product-experience.png"
                     >
-                      <source
-                        src="/expertise/product-experience.mp4"
-                        type="video/mp4"
-                      />
+                      <source src="/expertise/1080.mp4" type="video/mp4" />
                     </video>
                   </div>
                 </div>

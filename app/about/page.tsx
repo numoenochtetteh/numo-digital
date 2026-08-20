@@ -142,7 +142,7 @@ export default function AboutPage() {
                 playsInline
                 poster="/showcase/creative-workspace.jpg"
               >
-                <source src="/expertise/3.mp4" type="video/mp4" />
+                <source src="/expertise/0001.mp4" type="video/mp4" />
               </video>
 
               <div className="about-media-overlay" />

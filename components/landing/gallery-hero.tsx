@@ -29,25 +29,64 @@ const heroCards = [
   { src: "/showcase/2.png", className: "numo-arc-card numo-arc-card-10" },
 ];
 
-const companyTabs = ["Web Design", "Development", "UI/UX", "Digital Products"];
+const desktopTabs = ["Web Design", "Development", "UI/UX", "Digital Products"];
+
+const mobileTabs = ["Web Design", "UI/UX", "Digital Products"];
 
 const pixels = Array.from({ length: 54 }, (_, index) => index);
 
 export function GalleryHero() {
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState("Web Design");
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const media = window.matchMedia("(max-width: 620px)");
+
+    const updateDevice = () => {
+      setIsMobile(media.matches);
+    };
+
+    updateDevice();
+
+    media.addEventListener("change", updateDevice);
+
+    return () => {
+      media.removeEventListener("change", updateDevice);
+    };
+  }, []);
+
+  useEffect(() => {
+    const availableTabs = isMobile ? mobileTabs : desktopTabs;
+
+    if (!availableTabs.includes(activeTab)) {
+      setActiveTab(availableTabs[0]);
+    }
+
     const interval = window.setInterval(() => {
-      setActiveTab((current) => (current + 1) % companyTabs.length);
+      setActiveTab((current) => {
+        const currentIndex = availableTabs.indexOf(current);
+
+        if (currentIndex === -1) {
+          return availableTabs[0];
+        }
+
+        return availableTabs[(currentIndex + 1) % availableTabs.length];
+      });
     }, 3000);
 
     return () => window.clearInterval(interval);
-  }, []);
+  }, [isMobile, activeTab]);
+
+  const visibleTabs = isMobile ? mobileTabs : desktopTabs;
 
   return (
     <section className="numo-arc-hero">
+      {/* BACKGROUND GLOW */}
+
       <div className="numo-hero-glow numo-hero-glow-one" />
       <div className="numo-hero-glow numo-hero-glow-two" />
+
+      {/* PIXELS */}
 
       <div className="numo-hero-pixel-field" aria-hidden="true">
         {pixels.map((pixel) => (
@@ -72,16 +111,17 @@ export function GalleryHero() {
         ====================================================== */}
 
         <div className="numo-company-bar">
-          {companyTabs.map((item, index) => (
+          {visibleTabs.map((item) => (
             <button
               key={item}
               type="button"
-              onClick={() => setActiveTab(index)}
+              onClick={() => setActiveTab(item)}
               className={`numo-company-pill ${
-                activeTab === index ? "active" : ""
+                activeTab === item ? "active" : ""
               }`}
             >
               <span className="numo-company-dot" />
+
               <span className="numo-company-label">{item}</span>
             </button>
           ))}
@@ -142,6 +182,7 @@ export function GalleryHero() {
         .numo-arc-hero {
           position: relative;
           width: 100%;
+          max-width: 100%;
           overflow: hidden;
 
           background: linear-gradient(180deg, #f7f6f2 0%, #f2f1ec 100%);
@@ -149,6 +190,7 @@ export function GalleryHero() {
           color: #081126;
 
           isolation: isolate;
+          box-sizing: border-box;
         }
 
         .numo-arc-inner {
@@ -157,10 +199,13 @@ export function GalleryHero() {
           z-index: 4;
 
           width: min(1440px, 100%);
+          max-width: 100%;
 
           height: 730px;
 
           margin: 0 auto;
+
+          overflow: hidden;
         }
 
         /* =====================================================
@@ -287,7 +332,7 @@ export function GalleryHero() {
         }
 
         /* =====================================================
-           SERVICES BAR
+           DESKTOP SERVICE BAR
         ====================================================== */
 
         .numo-company-bar {
@@ -307,19 +352,21 @@ export function GalleryHero() {
 
           padding: 7px;
 
-          border: 1px solid rgba(255, 255, 255, 0.05);
+          border: 1px solid #171717;
 
           border-radius: 20px;
 
-          background: linear-gradient(135deg, #050a16 0%, #0c1428 100%);
+          background: #050505;
 
           box-shadow:
             0 16px 38px rgba(0, 0, 0, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.035);
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
           transform: translateX(-50%);
 
           animation: numoBarReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+          box-sizing: border-box;
         }
 
         @keyframes numoBarReveal {
@@ -354,7 +401,7 @@ export function GalleryHero() {
 
           padding: 0 18px;
 
-          color: #c4ccda;
+          color: rgba(255, 255, 255, 0.72);
 
           font-family: inherit;
 
@@ -374,7 +421,7 @@ export function GalleryHero() {
         }
 
         .numo-company-pill:hover {
-          background: rgba(255, 255, 255, 0.05);
+          background: #151515;
 
           color: #ffffff;
         }
@@ -387,7 +434,7 @@ export function GalleryHero() {
 
           border-radius: 50%;
 
-          background: #7f8aa0;
+          background: #777777;
 
           transition:
             background 0.4s ease,
@@ -396,11 +443,13 @@ export function GalleryHero() {
         }
 
         .numo-company-pill.active {
-          background: linear-gradient(135deg, #17264b 0%, #243765 100%);
+          background: #191919;
 
           color: #ffffff;
 
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
+          box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            0 8px 20px rgba(0, 0, 0, 0.18);
 
           transform: scale(1.015);
         }
@@ -410,7 +459,7 @@ export function GalleryHero() {
 
           transform: scale(1.25);
 
-          box-shadow: 0 0 12px rgba(217, 255, 37, 0.55);
+          box-shadow: 0 0 12px rgba(217, 255, 37, 0.5);
         }
 
         /* =====================================================
@@ -849,63 +898,89 @@ export function GalleryHero() {
 
         @media (max-width: 620px) {
           /*
-             IMPORTANT:
-             This top padding gives the navigation and
-             services bar their own separate space.
+             FULL WIDTH PHONE HERO.
+             No more left/right outer gaps.
           */
 
           .numo-arc-hero {
-            width: calc(100% - 20px);
+            width: 100%;
 
-            margin: 0 10px;
+            max-width: 100%;
 
-            padding-top: 88px;
+            margin: 0;
+
+            padding-top: 106px;
 
             overflow: hidden;
 
-            border: 1px solid #deddd7;
+            border-top: 1px solid #deddd7;
+            border-right: 0;
+            border-bottom: 1px solid #deddd7;
+            border-left: 0;
 
-            border-radius: 26px;
+            border-radius: 0;
 
             background: #f7f6f2;
 
-            box-shadow: 0 15px 45px rgba(18, 19, 18, 0.04);
+            box-shadow: none;
           }
 
           .numo-arc-inner {
             width: 100%;
+            max-width: 100%;
 
-            height: 590px;
+            height: 650px;
+
+            overflow: hidden;
           }
 
-          /*
-             CENTERED BAR
-          */
+          /* =====================================================
+             PHONE SERVICE BAR
+
+             3 ITEMS ONLY.
+             DEVELOPMENT REMOVED.
+             COLORFUL / LIGHT.
+          ====================================================== */
 
           .numo-company-bar {
-            top: 10px;
+            top: 12px;
             left: 50%;
 
             width: calc(100% - 28px);
 
             display: grid;
 
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
 
             align-items: center;
 
-            gap: 3px;
+            gap: 5px;
 
             padding: 6px;
 
-            border-radius: 17px;
+            overflow: hidden;
+
+            border: 1px solid rgba(77, 84, 72, 0.1);
+
+            border-radius: 18px;
+
+            background: linear-gradient(
+              135deg,
+              #f7f2e7 0%,
+              #eef3e1 52%,
+              #eeeefa 100%
+            );
+
+            box-shadow:
+              0 13px 30px rgba(51, 57, 48, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.92);
 
             transform: translateX(-50%);
 
-            overflow: hidden;
-
             animation: numoMobileBarReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1)
               both;
+
+            box-sizing: border-box;
           }
 
           @keyframes numoMobileBarReveal {
@@ -927,15 +1002,29 @@ export function GalleryHero() {
 
             min-width: 0;
 
-            min-height: 39px;
+            min-height: 42px;
 
-            gap: 5px;
+            gap: 6px;
 
-            padding: 0 3px;
+            padding: 0 7px;
 
-            border-radius: 11px;
+            border-radius: 13px;
 
-            font-size: 8px;
+            background: transparent;
+
+            color: #565e55;
+
+            font-size: 9.5px;
+
+            font-weight: 650;
+
+            transform: none;
+          }
+
+          .numo-company-pill:hover {
+            background: rgba(255, 255, 255, 0.48);
+
+            color: #252a25;
           }
 
           .numo-company-label {
@@ -949,16 +1038,38 @@ export function GalleryHero() {
           }
 
           .numo-company-dot {
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
+
+            background: #9aa39a;
           }
 
-          /*
-             LARGE PHONE ARC
-          */
+          .numo-company-pill.active {
+            background: linear-gradient(135deg, #d9ff25 0%, #e9ff86 100%);
+
+            color: #172014;
+
+            box-shadow:
+              0 8px 18px rgba(178, 211, 35, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.55);
+
+            transform: none;
+          }
+
+          .numo-company-pill.active .numo-company-dot {
+            background: #172014;
+
+            transform: scale(1.05);
+
+            box-shadow: none;
+          }
+
+          /* =====================================================
+             PHONE IMAGE ARC
+          ====================================================== */
 
           .numo-arc-images {
-            top: 84px;
+            top: 88px;
             left: 50%;
 
             width: 520px;
@@ -970,11 +1081,6 @@ export function GalleryHero() {
 
             will-change: transform;
           }
-
-          /*
-             More visible than before,
-             but still slow and premium.
-          */
 
           @keyframes numoMobileArcMove {
             0%,
@@ -995,10 +1101,6 @@ export function GalleryHero() {
             }
           }
 
-          /*
-             Keep the mobile arc clean.
-          */
-
           .numo-arc-card-1,
           .numo-arc-card-2,
           .numo-arc-card-9,
@@ -1013,8 +1115,7 @@ export function GalleryHero() {
           }
 
           /*
-             Individual image movement.
-             This makes the phone hero feel alive.
+             IMAGE MOTION STAYS ON PHONE
           */
 
           .numo-arc-card img {
@@ -1119,9 +1220,9 @@ export function GalleryHero() {
             transform: rotate(29deg);
           }
 
-          /*
-             REMOVE PIXEL CLUTTER ON PHONE
-          */
+          /* =====================================================
+             NO PIXELS ON PHONE
+          ====================================================== */
 
           .numo-hero-pixel-field {
             display: none;
@@ -1132,7 +1233,7 @@ export function GalleryHero() {
           ====================================================== */
 
           .numo-arc-content {
-            top: 292px;
+            top: 296px;
             left: 50%;
 
             width: calc(100% - 30px);
@@ -1195,6 +1296,8 @@ export function GalleryHero() {
             padding: 0 22px;
 
             font-size: 12px;
+
+            flex-shrink: 0;
           }
 
           .numo-arc-primary {
@@ -1214,16 +1317,31 @@ export function GalleryHero() {
             height: 16px;
           }
 
-          .numo-arc-secondary {
-            background: rgba(255, 255, 255, 0.84);
-          }
-
           /*
-             PHONE GLOW
+             FIX:
+             View our work now fully visible.
           */
 
+          .numo-arc-secondary {
+            display: inline-flex;
+
+            background: rgba(255, 255, 255, 0.9);
+
+            border: 1px solid #d8deea;
+
+            color: #101827;
+
+            opacity: 1;
+
+            visibility: visible;
+          }
+
+          /* =====================================================
+             PHONE GLOW
+          ====================================================== */
+
           .numo-hero-glow-one {
-            top: 170px;
+            top: 180px;
             left: -50px;
 
             width: 210px;
@@ -1245,29 +1363,29 @@ export function GalleryHero() {
 
         @media (max-width: 480px) {
           .numo-arc-hero {
-            padding-top: 92px;
+            padding-top: 106px;
           }
 
           .numo-arc-inner {
-            height: 570px;
+            height: 635px;
           }
 
           .numo-company-bar {
-            top: 8px;
+            top: 10px;
 
             width: calc(100% - 24px);
           }
 
           .numo-company-pill {
-            min-height: 37px;
+            min-height: 40px;
 
-            padding: 0 2px;
+            padding: 0 5px;
 
-            font-size: 7.6px;
+            font-size: 9px;
           }
 
           .numo-arc-images {
-            top: 80px;
+            top: 84px;
 
             width: 485px;
           }
@@ -1297,7 +1415,7 @@ export function GalleryHero() {
           }
 
           .numo-arc-content {
-            top: 278px;
+            top: 282px;
           }
 
           .numo-arc-content h1 {
@@ -1323,41 +1441,44 @@ export function GalleryHero() {
 
         @media (max-width: 390px) {
           .numo-arc-hero {
-            width: calc(100% - 16px);
+            width: 100%;
 
-            margin-right: 8px;
-            margin-left: 8px;
+            margin: 0;
 
-            padding-top: 90px;
+            padding-top: 102px;
 
-            border-radius: 23px;
+            border-radius: 0;
           }
 
           .numo-arc-inner {
-            height: 555px;
+            height: 620px;
           }
 
           .numo-company-bar {
+            top: 9px;
+
             width: calc(100% - 20px);
 
             padding: 5px;
           }
 
           .numo-company-pill {
-            min-height: 35px;
+            min-height: 38px;
 
-            gap: 3px;
+            gap: 4px;
 
-            font-size: 7px;
+            padding: 0 4px;
+
+            font-size: 8.4px;
           }
 
           .numo-company-dot {
-            width: 4px;
-            height: 4px;
+            width: 5px;
+            height: 5px;
           }
 
           .numo-arc-images {
-            top: 76px;
+            top: 79px;
 
             width: 460px;
           }
@@ -1401,7 +1522,7 @@ export function GalleryHero() {
           }
 
           .numo-arc-content {
-            top: 264px;
+            top: 268px;
           }
 
           .numo-content-eyebrow {
@@ -1438,22 +1559,26 @@ export function GalleryHero() {
         ====================================================== */
 
         @media (max-width: 350px) {
+          .numo-arc-hero {
+            padding-top: 98px;
+          }
+
           .numo-arc-inner {
-            height: 545px;
+            height: 605px;
           }
 
           .numo-company-pill {
-            font-size: 6.5px;
+            font-size: 7.6px;
           }
 
           .numo-arc-images {
-            top: 73px;
+            top: 75px;
 
             width: 420px;
           }
 
           .numo-arc-content {
-            top: 254px;
+            top: 258px;
           }
 
           .numo-arc-content h1 {
